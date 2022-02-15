@@ -56,6 +56,12 @@
                     <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">toimittajat</option>
                 </select>
             </div>
+            <!-- Tuotteen kuvan lataaminen -->
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile02">
+                <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
+            </div>
+            <button type="submit" class="btn btn-secondary btn-lg">Tallenna</button>   
         </form>
 
 

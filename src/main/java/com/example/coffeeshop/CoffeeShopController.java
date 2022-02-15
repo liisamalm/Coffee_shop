@@ -42,14 +42,7 @@ public class CoffeeShopController {
         return "tuotteenhallinta";
     }
 
-    @GetMapping("/tuotteen-muokkaus")
-    public String editProduct(Model model) {
-        model.addAttribute("tuotteet", tuoteRepository.findAll());
-        model.addAttribute("osastot", osastoRepository.findAll());
-        model.addAttribute("toimittajat", toimittajaRepository.findAll());
-        model.addAttribute("valmistajat", valmistajaRepository.findAll());
-        return "tuotteen-muokkaus";
-    }
+    
 
     
 

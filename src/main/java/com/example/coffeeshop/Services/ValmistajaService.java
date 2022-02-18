@@ -25,4 +25,19 @@ public class ValmistajaService {
     public List<Valmistaja> getAllValmistajat() {
         return valmistajaRepository.findAll();
     }
+
+    public void addValmistaja(String nimi, String url) {
+        Valmistaja valmistaja = new Valmistaja();
+        valmistaja.setNimi(nimi);
+        valmistaja.setUrl(url);
+        valmistajaRepository.save(valmistaja);
+    }
+
+    public void updateValmistaja() {
+
+    }
+
+    public void deleteValmistaja(Long valmistajaId) {
+        valmistajaRepository.deleteById(valmistajaId);
+    }
 }

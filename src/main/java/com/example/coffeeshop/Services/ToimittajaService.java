@@ -26,4 +26,11 @@ public class ToimittajaService {
     public List<Toimittaja> getAllToimittajat() {
         return toimittajaRepository.findAll();
     }
+
+
+    public void addToimittaja(Toimittaja toimittaja) {
+        toimittajaRepository.save(toimittaja);
+
+
+    }
 }

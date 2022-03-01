@@ -40,7 +40,9 @@ public class ValmistajaService {
     }
 
     public void deleteValmistaja(Long valmistajaID) {
-        
+        Valmistaja valmistaja = valmistajaRepository.findById(valmistajaID)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + valmistajaID));
+    valmistajaRepository.delete(valmistaja);
     }
 
     

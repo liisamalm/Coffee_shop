@@ -27,7 +27,7 @@
                     <label for="floatingUrl">Valmistajan url-osoite</label>
                     
                 </div>
-                <button type="submit" class="btn btn-secondary btn-lg">Tallenna</button>
+                <button type="submit" class="btn btn-secondary btn-lg">Lisää</button>
             </form>
 
 <hr>
@@ -38,6 +38,7 @@
                     <option selected>Valmistajan nimi</option> 
                     <option th:each="valmistaja : ${valmistajat}" th:text="${valmistaja.nimi}" th:value="${valmistaja.id}"></option>
                 </select>
+                <button></button>
             </div>
 
             <!-- Modal -->

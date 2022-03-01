@@ -2,6 +2,8 @@ package com.example.coffeeshop.Services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.example.coffeeshop.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,12 @@ public class ValmistajaService {
 
     }
 
-    public void deleteValmistaja(Long valmistajaId) {
-        valmistajaRepository.deleteById(valmistajaId);
+    public void deleteValmistaja(Long valmistajaID) {
+        
     }
+
+    
+
+
+
 }

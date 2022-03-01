@@ -40,13 +40,19 @@ public class ValmistajaController {
     //     return "redirect:/valmistajan-muokkaus";
     // }
 
-    @DeleteMapping("/valmistajan-muokkaus/{valmistajaId}")
-    public String deleteValmistaja(@PathVariable Long valmistajaId) {
-        valmistajaService.deleteValmistaja(valmistajaId);
+    /* @DeleteMapping("/valmistajan-muokkaus/{id}")
+    public String deleteValmistaja(@PathVariable("id") long id, Model model) {
+        valmistajaService.deleteValmistaja(id);
         return "redirect:/valmistajan-muokkaus";
-    }
+    } */
 
-
+    /* @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+    valmistajaService.deleteValmistaja(id);
+    return "redirect:/valmistajan-muokkaus"; */
 }
+
+
+
 
 // @RequestParam(value = "nimi", required = false, defaultValue = "defaultName") String name

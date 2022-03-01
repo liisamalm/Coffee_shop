@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -34,25 +36,16 @@ public class ValmistajaController {
         return "redirect:/valmistajan-muokkaus";
     }
 
-    // @PostMapping("/valmistajan-muokkaus/{valmistajaId}")
-    // public String updateValmistaja(@RequestParam String nimi, @RequestParam String url, @PathVariable Long valmistajaId) {
-    //     valmistajaService.addValmistaja(nimi, url);
-    //     return "redirect:/valmistajan-muokkaus";
-    // }
+    @GetMapping("/valmistajan-muokkaus/{id}")
+    public String showValmistaja(@RequestParam Long id, Model model) {
+        valmistajaService.findValmistaja(id);
+        return "redirect:/valmistaja/" + id;
+    }
 
-    /* @DeleteMapping("/valmistajan-muokkaus/{id}")
-    public String deleteValmistaja(@PathVariable("id") long id, Model model) {
-        valmistajaService.deleteValmistaja(id);
-        return "redirect:/valmistajan-muokkaus";
-    } */
+    @GetMapping("/valmistaja/{id}")
+    public String showOneValmistaja(@PathVariable Long id, Model model) {
+        model.addAttribute("valmistaja", valmistajaService.findValmistaja(id));
+        return "valmistaja";
+    }
 
-    /* @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) {
-    valmistajaService.deleteValmistaja(id);
-    return "redirect:/valmistajan-muokkaus"; */
-}
-
-
-
-
-// @RequestParam(value = "nimi", required = false, defaultValue = "defaultName") String name
+}    

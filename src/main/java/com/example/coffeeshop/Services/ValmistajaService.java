@@ -1,6 +1,7 @@
 package com.example.coffeeshop.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -43,6 +44,11 @@ public class ValmistajaService {
         Valmistaja valmistaja = valmistajaRepository.findById(valmistajaID)
             .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + valmistajaID));
     valmistajaRepository.delete(valmistaja);
+    }
+
+    public Optional<Valmistaja> findValmistaja(Long id) {
+        Optional<Valmistaja> valmistaja = valmistajaRepository.findById(id);
+        return valmistaja;
     }
 
     

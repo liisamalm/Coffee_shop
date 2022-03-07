@@ -1,5 +1,7 @@
 package com.example.coffeeshop;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
@@ -46,6 +48,12 @@ public class ValmistajaController {
     public String showOneValmistaja(@PathVariable Long id, Model model) {
         model.addAttribute("valmistaja", valmistajaService.findValmistaja(id));
         return "valmistaja";
+    }
+
+    @DeleteMapping("/valmistaja/{id}")
+    public String deleteValmistaja(@PathVariable Long id) {
+        valmistajaService.deleteValmistaja(id);
+        return "redirect:/valmistajan-muokkaus";
     }
 
 }    

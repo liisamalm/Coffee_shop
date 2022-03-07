@@ -43,11 +43,11 @@ public class ValmistajaService {
     public void deleteValmistaja(Long valmistajaID) {
         Valmistaja valmistaja = valmistajaRepository.findById(valmistajaID)
             .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + valmistajaID));
-    valmistajaRepository.delete(valmistaja);
+        valmistajaRepository.delete(valmistaja);
     }
 
-    public Optional<Valmistaja> findValmistaja(Long id) {
-        Optional<Valmistaja> valmistaja = valmistajaRepository.findById(id);
+    public Valmistaja findValmistaja(Long id) {
+        Valmistaja valmistaja = valmistajaRepository.getById(id);
         return valmistaja;
     }
 

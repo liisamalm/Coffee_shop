@@ -30,7 +30,7 @@
             </form>
 
 <hr>
-        <!-- Valmistajan muokkaus -->
+        <!-- Valmistajan muokkaus
             <h1 class="h3 mb-3 fw-normal">Muuta valmistajan tietoja</h1>
             <div class="form-floating"> 
                 <select  class="form-select" name="valmistajaID">
@@ -41,24 +41,24 @@
                     </option>
                 </select>
                 <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#valmistajanMuokkaus">Muuta tietoja</button>
-            </div>
+            </div> -->
 
-
-            
-        </div>
-        <hr>
-            
-        <!-- Poista valmistaja -->
+            <!-- Poista valmistaja -->
         <form class="form-signin" th:action="@{/valmistajan-muokkaus/{id}}" method="delete">
-            <h1 class="h3 mb-3 fw-normal">Poista valmistaja</h1>
+            <h1 class="h3 mb-3 fw-normal">Poista tai muuta valmistajan tietoja</h1>
             <div class="form-floating"> 
                 <select class="form-select" name="id">
                     <option selected>Valmistajan nimi</option>
                     <option th:each="valmistaja : ${valmistajat}" th:text="${valmistaja.nimi}" th:value="${valmistaja.id}"></option>
                 </select>
-                <button type="submit" class="btn btn-secondary btn-lg">Poista valmistaja</button>
+                <button type="submit" class="btn btn-secondary btn-lg">Valitse</button>
             </div>
         </form> 
+            
+    </div>
+        <hr>
+            
+        
 
       </main>
     

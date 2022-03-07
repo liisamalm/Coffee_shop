@@ -8,6 +8,20 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main class="px-3">
             <h1>Valmistaja</h1>
+            <table class="table-dark">
+                <tr>
+                    <th>Nimi</th>
+                    <th>Url-osoite</th>
+                    <th>Muokkaa</th>
+                    <th>Poista</th>
+                </tr>
+                <tr>
+                    <td th:text="${valmistaja.nimi}"></td>
+                    <td th:text="${valmistaja.url}"></td>
+                    <td></td>
+                    <td><a th:href="@{/invoice/delete(id=${valmistaja.id})}" class= "btn btn-danger">DELETE</a></td>
+                </tr>
+            </table>
 
         </main>
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  

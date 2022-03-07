@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head-fragment('Coffee Shop')">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
+  <header th:replace="fragments/header :: header-fragment"></header>
+  
+  
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <main class="px-3">
+
+            <h1>Toimittaja</h1>
+            <!-- <h1 th:text="${toimittaja.nimi + ' ' + toimittaja.id}">Omistajan nimi</h1> -->
+
+            <p><a th:href="@{/updateToimittaja}">Päivitä tietoja</a></p>
+
+            <form class="form-signin" th:action="@{/toimittaja/{id}}" method="GET">
+
+                <h1 class="h3 mb-3 fw-normal">Muokkaa Toimittajan tietoja</h1>
+                <div class="form-floating"> 
+                    <select class="form-select" name="id">
+                        <option selected>Toimittajan nimi</option>
+                        <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}"></option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary btn-lg">Poista toimittaja</button>
+                </div>
+            </form> 
+           
+             <!--  <ul>
+                  <li th:each="toimittaja : ${toimittajat}">
+                      <a th:href="@{/toimittajat/{id}(id=${toimittaja.id})}">
+                          <span th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">Toimittajan nimi</span>
+                      </a>
+                  </li>
+              </ul>
+          -->
+            <!-- Muokkaa Toimittajan tietoja -->
+               <!-- <form class="form-signin" th:action="@{/toimittajan-muokkaus/{id}}" method="delete">
+
+                    <h1 class="h3 mb-3 fw-normal" th:href="@{/updateToimittaja}">Muokkaa Toimittajan tietoja</h1>
+                    <div class="form-floating"> 
+                        <select class="form-select" name="id">
+                            <option selected>Toimittajan nimi</option>
+                            <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-secondary btn-lg">Poista toimittaja</button>
+                    </div>
+                </form>  -->
+
+
+        </main>
+    <footer th:replace="fragments/footer :: footer-fragment"></footer>  
+    </div>
+    </body>
+</html>

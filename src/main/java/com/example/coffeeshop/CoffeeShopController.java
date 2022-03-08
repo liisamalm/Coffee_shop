@@ -26,7 +26,7 @@ public class CoffeeShopController {
     public String home() {
         return "index";
     }
-
+   
     @GetMapping("/kahvilaitteet")
     public String machines() {
         return "kahvilaitteet";

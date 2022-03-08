@@ -8,20 +8,19 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main class="px-3">
             <h1>Valmistaja</h1>
-            <table class="table-dark">
-                <tr>
-                    <th>Nimi</th>
-                    <th>Url-osoite</th>
-                    <th>Muokkaa</th>
-                    <th>Poista</th>
-                </tr>
-                <tr>
-                    <td th:text="${valmistaja.nimi}"></td>
-                    <td th:text="${valmistaja.url}"></td>
-                    <td></td>
-                    <td><a th:href="@{/invoice/delete(id=${valmistaja.id})}" class= "btn btn-danger">DELETE</a></td>
-                </tr>
-            </table>
+            <form action="#" 
+            th:action="@{/update/{id}(id=${valmistaja.id})}" 
+            th:object="${valmistaja}" 
+            method="post">
+                <label for="nimi">Nimi</label>
+                <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
+                <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
+                <label for="url">Url</label>
+                <input type="text" th:field="*{url}" id="url" placeholder="Url">
+                <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                <input type="submit" value="Päivitä">  
+                <button class="btn btn-danger"><a th:href="@{/delete/{id}(id=${valmistaja.id})}">Poista</a> </button>
+            </form>
 
         </main>
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  

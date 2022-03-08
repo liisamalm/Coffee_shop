@@ -36,13 +36,18 @@ public class ValmistajaService {
         valmistajaRepository.save(valmistaja);
     }
 
-    public void updateValmistaja() {
-
+    public void updateValmistaja(Long id, String nimi, String url) {
+        Valmistaja valmistaja = valmistajaRepository.getById(id);
+        valmistaja.setNimi(nimi);
+        valmistaja.setUrl(url);
+    
+        valmistajaRepository.save(valmistaja);
     }
 
-    public void deleteValmistaja(Long valmistajaID) {
+    @Transactional
+    public void deleteOneValmistaja(Long valmistajaID) {
         Valmistaja valmistaja = valmistajaRepository.findById(valmistajaID)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + valmistajaID));
+        .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + valmistajaID));
         valmistajaRepository.delete(valmistaja);
     }
 

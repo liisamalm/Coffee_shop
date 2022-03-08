@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,9 +51,16 @@ public class ValmistajaController {
         return "valmistaja";
     }
 
-    @DeleteMapping("/valmistaja/{id}")
-    public String deleteValmistaja(@PathVariable Long id) {
-        valmistajaService.deleteValmistaja(id);
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+    valmistajaService.deleteOneValmistaja(id);
+    return "redirect:/valmistajan-muokkaus";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateValmistaja(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String url) {
+        valmistajaService.updateValmistaja(id, nimi, url);
+        
         return "redirect:/valmistajan-muokkaus";
     }
 

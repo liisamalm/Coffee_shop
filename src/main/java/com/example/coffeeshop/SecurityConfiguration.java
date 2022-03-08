@@ -18,6 +18,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/kahvilaitteet").permitAll()
+                .antMatchers("/kulutustuotteet").permitAll()
+                .antMatchers("/vip").permitAll()
                 .anyRequest().authenticated();
  
         http.formLogin()

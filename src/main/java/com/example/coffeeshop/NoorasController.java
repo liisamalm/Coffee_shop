@@ -29,13 +29,7 @@ public class NoorasController {
     @Autowired
     private OsastoService osastoService;
 
-    /* @GetMapping("nooralogin")
-    public String nooraLogin() {
-        return "nooralogin";
-    } */
-
     
-
     @GetMapping("/tuotteen-muokkaus")
     public String editProduct(Model model) {
         model.addAttribute("tuotteet", tuotteenHallintaService.getAllProducts());
@@ -55,6 +49,8 @@ public class NoorasController {
         return new ResponseEntity<>(uusiTuote, HttpStatus.CREATED);
 
     }
+
+// Uloskirjautuminen 
 
 
 

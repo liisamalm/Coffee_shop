@@ -36,6 +36,7 @@ public class NoorasController {
 
     @Autowired
     private OsastoService osastoService;
+
     
     @GetMapping("/tuotteen-muokkaus")
     public String editProduct(Model model) {
@@ -75,6 +76,8 @@ public class NoorasController {
         model.addAttribute("tuote", tuotteenHallintaService.findTuote(id));
         return "tuote";
     }
+
+// Uloskirjautuminen 
 
 
 

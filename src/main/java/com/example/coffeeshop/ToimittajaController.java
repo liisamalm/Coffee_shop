@@ -51,23 +51,19 @@ public class ToimittajaController {
         return "toimittaja";
     }
 
-    @GetMapping("/upateToimittaja/{id}")
-    public String showUpdateForm(@PathVariable Long id, Model model) {
-        Optional<Toimittaja> toimittaja = toimittajaService.findToimittaja(id);
-        model.addAttribute("toimittaja", toimittaja);
-   
-        return "updateToimittaja";
-    
+    // Poistaa toimittajan tietokannasta
+    @GetMapping("/deleteToimittaja/{id}")
+    public String deleteToimittaja(@PathVariable("id") long id, Model model) {
+    toimittajaService.deleteOneToimittaja(id);
+    return "redirect:/toimittajan-muokkaus";
     }
 
- 
+    // Päivittää toimittajan tiedot
+    @PostMapping("/updateToimittaja/{id}")
+    public String updateToimittaja(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String yhteyshenkilo, String yhteyshenkilonEmail) {
+        toimittajaService.updateToimittaja(id, nimi, yhteyshenkilo, yhteyshenkilonEmail);
+        return "redirect:/toimittajan-muokkaus";
+    }
 }
 
-/* @PostMapping("/toimittajan-muokkaus")
-    public String addToimittaja(@RequestParam String nimi, 
-                                @RequestParam String yhteyshenkilo, 
-                                @RequestParam String yhteyshenkilonEmail) {
-       toimittajaService.addToimittaja(nimi,yhteyshenkilo,yhteyshenkilonEmail);
-        return "redirect:/toimittajan-muokkaus";
-    }  */
 

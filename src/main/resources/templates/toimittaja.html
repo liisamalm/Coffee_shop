@@ -4,53 +4,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
-  <header th:replace="fragments/header :: header-fragment"></header>
-  
-  
+  <header th:replace="fragments/header :: header-fragment"></header>  
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main class="px-3">
-
             <h1>Toimittaja</h1>
-            <!-- <h1 th:text="${toimittaja.nimi + ' ' + toimittaja.id}">Omistajan nimi</h1> -->
-
-            <p><a th:href="@{/updateToimittaja}">Päivitä tietoja</a></p>
-
-            <form class="form-signin" th:action="@{/toimittaja/{id}}" method="GET">
-
-                <h1 class="h3 mb-3 fw-normal">Muokkaa Toimittajan tietoja</h1>
-                <div class="form-floating"> 
-                    <select class="form-select" name="id">
-                        <option selected>Toimittajan nimi</option>
-                        <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}"></option>
-                    </select>
-                    <button type="submit" class="btn btn-secondary btn-lg">Poista toimittaja</button>
-                </div>
-            </form> 
-           
-             <!--  <ul>
-                  <li th:each="toimittaja : ${toimittajat}">
-                      <a th:href="@{/toimittajat/{id}(id=${toimittaja.id})}">
-                          <span th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">Toimittajan nimi</span>
-                      </a>
-                  </li>
-              </ul>
-          -->
-            <!-- Muokkaa Toimittajan tietoja -->
-               <!-- <form class="form-signin" th:action="@{/toimittajan-muokkaus/{id}}" method="delete">
-
-                    <h1 class="h3 mb-3 fw-normal" th:href="@{/updateToimittaja}">Muokkaa Toimittajan tietoja</h1>
-                    <div class="form-floating"> 
-                        <select class="form-select" name="id">
-                            <option selected>Toimittajan nimi</option>
-                            <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}"></option>
-                        </select>
-                        <button type="submit" class="btn btn-secondary btn-lg">Poista toimittaja</button>
-                    </div>
-                </form>  -->
-
+            <form action="#" 
+            th:action="@{/updateToimittaja/{id}(id=${toimittaja.id})}" 
+            th:object="${toimittaja}" 
+            method="post">
+                <label for="nimi">Nimi</label>
+                <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
+                <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
+                <label for="yhteyshenkilo">Yhteyshenkilö</label>
+                <input type="text" th:field="*{yhteyshenkilo}" id="yhteyshenkilo" placeholder="Yhteyshenkilö">
+                <span th:if="${#fields.hasErrors('yhteyshenkilo')}" th:errors="*{yhteyshenkilo}"></span>
+                <label for="yhteyshenkilonEmail">Email</label>
+                <input type="text" th:field="*{yhteyshenkilonEmail}" id="yhteyshenkilonEmail" placeholder="yhteyshenkilonEmail">
+                <span th:if="${#fields.hasErrors('yhteyshenkilonEmail')}" th:errors="*{yhteyshenkilonEmail}"></span>
+                <input type="submit" value="Päivitä">  
+                <button class="btn btn-danger"><a th:href="@{/deleteToimittaja/{id}(id=${toimittaja.id})}">Poista</a> </button>
+            </form>
 
         </main>
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
     </body>
 </html>

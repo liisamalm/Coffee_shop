@@ -3,6 +3,8 @@ package com.example.coffeeshop.Services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import com.example.coffeeshop.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,28 +32,28 @@ public class ToimittajaService {
     }
 
     //lisää uuden toimittajan tietokantaan
-    
     public void addToimittaja(@ModelAttribute Toimittaja toimittaja) {
         toimittajaRepository.save(toimittaja);
     }
      
-    public Optional<Toimittaja> findToimittaja(Long id) {
-        Optional<Toimittaja> toimittaja = toimittajaRepository.findById(id);
+    public void updateToimittaja(Long id, String nimi, String yhteushenkilo, String yhteyshenkilonEmail) {
+        Toimittaja toimittaja = toimittajaRepository.getById(id);
+        toimittaja.setNimi(nimi);
+        toimittaja.setYhteyshenkilo(yhteushenkilo);
+        toimittaja.setYhteyshenkilonEmail(yhteyshenkilonEmail);
+        toimittajaRepository.save(toimittaja);
+    }
+
+    @Transactional
+    public void deleteOneToimittaja(Long toimittajaID) {
+        Toimittaja toimittaja = toimittajaRepository.findById(toimittajaID)
+        .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + toimittajaID));
+        toimittajaRepository.delete(toimittaja);
+    }
+
+    public Toimittaja findToimittaja(Long id) {
+        Toimittaja toimittaja = toimittajaRepository.getById(id);
         return toimittaja;
     }
 
-    public void updateToimittaja(){
-
-    }
-
 }
-
-
-/* public void addToimittaja(String nimi, String yhteyshenkilo, String yhteyshenkilonEmail) {
-        Toimittaja toimittaja = new Toimittaja();
-        toimittaja.setNimi(nimi);
-        toimittaja.setYhteyshenkilo(yhteyshenkilo);
-        toimittaja.setYhteyshenkilonEmail(yhteyshenkilonEmail);
-        toimittajaRepository.save(toimittaja);
-    } 
-     */

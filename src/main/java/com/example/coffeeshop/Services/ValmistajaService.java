@@ -40,7 +40,6 @@ public class ValmistajaService {
         Valmistaja valmistaja = valmistajaRepository.getById(id);
         valmistaja.setNimi(nimi);
         valmistaja.setUrl(url);
-    
         valmistajaRepository.save(valmistaja);
     }
 

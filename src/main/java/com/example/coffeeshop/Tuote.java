@@ -23,7 +23,7 @@ public class Tuote extends AbstractPersistable<Long>{
     private String kuvaus;
     private BigDecimal hinta;
     @Lob
-    private byte[] tuoteKuva;
+    private String tuoteKuva;
 
 
     @ManyToOne

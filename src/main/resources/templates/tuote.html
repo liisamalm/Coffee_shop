@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head-fragment('Coffee Shop')">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
+  <header th:replace="fragments/header :: header-fragment"></header>  
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <main class="px-3">
+            <h1>Tuote</h1>
+            <form action="#" 
+            th:action="@{/updateTuote/{id}(id=${tuote.id})}" 
+            th:object="${tuote}" 
+            method="post">
+                <label for="nimi">Nimi</label>
+                <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
+                <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
+                <label for="kuvaus">Kuvaus</label>
+                <input type="text" th:field="*{kuvaus}" id="kuvaus" placeholder="Kuvaus">
+                <span th:if="${#fields.hasErrors('kuvaus')}" th:errors="*{kuvaus}"></span>
+                <label for="hinta">Hinta</label>
+                <input type="number" th:field="*{hinta}" id="hinta" placeholder="Hinta">
+                <span th:if="${#fields.hasErrors('hinta')}" th:errors="*{hinta}"></span> 
+                <!-- <img th:src="*{'data:image/jpg;base64,'+{tuote.tuotekuva}}" alt="">
+                <label for="tuotekuva">Tuotekuva</label>
+                <input type="file" th:field="*{tuotekuva}" id="tuotekuva" placeholder="Tuotekuva">
+                <span th:if="${#fields.hasErrors('tuotekuva')}" th:errors="*{tuotekuva}"></span>  -->
+                <label for="toimittaja">Toimittaja</label>
+                <input type="text" th:field="*{toimittaja.nimi}" id="toimittaja" placeholder="Toimittaja">
+                <span th:if="${#fields.hasErrors('toimittaja.nimi')}" th:errors="*{toimittaja.nimi}"></span>
+                <label for="valmistaja">Valmistaja</label>
+                <input type="text" th:field="*{valmistaja.nimi}" id="valmistaja" placeholder="Valmistaja">
+                <span th:if="${#fields.hasErrors('valmistaja.nimi')}" th:errors="*{valmistaja.nimi}"></span>
+                <label for="osasto">Osasto</label>
+                <input type="text" th:field="*{osasto.nimi}" id="osasto" placeholder="Osasto">
+                <span th:if="${#fields.hasErrors('osasto.nimi')}" th:errors="*{osasto.nimi}"></span>
+                <input type="submit" value="Päivitä">  
+                <button class="btn btn-danger"><a th:href="@{/deleteTuote/{id}(id=${tuote.id})}">Poista</a> </button>
+            </form>
+
+        </main>
+    <footer th:replace="fragments/footer :: footer-fragment"></footer>  
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
+    </body>
+</html>

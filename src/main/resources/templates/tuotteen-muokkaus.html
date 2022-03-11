@@ -12,12 +12,12 @@
         <h1>Tuotteen hallinta</h1>
         <p class="lead">Täällä voit lisätä, poistaa tai muokata tuotteita.</p>
         
-        <form class="form-signin" th:action="@{/tuotteet}" method="post">
+        <form class="form-signin" th:action="@{/tuotteen-muokkaus}" method="post" modelAttribute="uusiTuote" enctype="multipart/form-data">
             <h1 class="h3 mb-3 fw-normal">Tuotteen lisäys</h1>
 
             <!-- Valmistajan valinta -->
             <div class="form-floating"> 
-                <select class="form-select" name="valmistajaID">
+                <select class="form-select" name="valmistaja">
                     <option selected>Valitse valmistaja</option>
                     <option th:each="valmistaja : ${valmistajat}" th:text="${valmistaja.nimi}" th:value="${valmistaja.id}">valmistajat</option>
                 </select>
@@ -25,19 +25,19 @@
 
             <!-- Tuotenimi -->
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingTuoteNimi" name="tuoteNimi" placeholder="Tuotteen nimi">
+                <input type="text" class="form-control" id="floatingTuoteNimi" name="nimi" placeholder="Tuotteen nimi">
                 <label for="floatingTuoteNimi">Tuotteen nimi</label>
             </div>
 
             <!-- Tuotekuvaus -->
             <div class="form-floating">
-                <textarea name="tuotekuvaus" rows="3" class="form-control" id="floatingTuoteKuvaus" placeholder="Tuotekuvaus"></textarea>
+                <textarea name="kuvaus" rows="3" class="form-control" id="floatingTuoteKuvaus" placeholder="Tuotekuvaus"></textarea>
                 <label for="floatingTuoteKuvaus">Tuotekuvaus</label>
             </div>
 
             <!-- Osaston valinta -->
             <div class="form-floating"> 
-                <select class="form-select" name="osastoID">
+                <select class="form-select" name="osasto">
                     <option selected>Valitse osasto</option>
                     <option th:each="osasto : ${osastot}" th:text="${osasto.nimi}" th:value="${osasto.id}">osastot</option>
                 </select>
@@ -45,34 +45,36 @@
 
             <!-- Tuotten hinta -->
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingTuotteenHinta" name="tuotteenHinta" placeholder="Tuotteen hinta">
+                <input type="text" class="form-control" id="floatingTuotteenHinta" name="hinta" placeholder="Tuotteen hinta">
                 <label for="floatingTuotteenHinta">Tuotteen hinta</label>
             </div>
 
             <!-- Toimittajan valinta -->
             <div class="form-floating"> 
-                <select class="form-select" name="toimittajaID">
+                <select class="form-select" name="toimittaja">
                     <option selected>Valitse toimittaja</option>
                     <option th:each="toimittaja : ${toimittajat}" th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">toimittajat</option>
                 </select>
             </div>
             <!-- Tuotteen kuvan lataaminen -->
             <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
+                <input type="file" class="form-control" name="tuotekuva" id="tuotekuva">
                 <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
             </div>
             <button type="submit" class="btn btn-secondary btn-lg">Tallenna</button>   
         </form>
 
 
-        <!-- Poista tuote -->
-        <form class="form-signin" th:action="@{/toimittajan-muokkaus/{id}}" method="post">
-            <h1 class="h3 mb-3 fw-normal">Poista tuote</h1>
+        <!-- Poista tai muokkaa tuotetta -->
+        <form class="form-signin" th:action="@{/tuotteen-muokkaus/{id}}" method="put">
+            <h1 class="h3 mb-3 fw-normal">Poista tai muokkaa tuotetta</h1>
             <div class="form-floating"> 
-                <select class="form-select" name="tuoteID">
+                <select class="form-select" name="id">
                     <option selected>Tuotteen nimi</option>
                     <option th:each="tuote : ${tuotteet}" th:text="${tuote.nimi}" th:value="${tuote.id}">mihin tämä tulee</option>
                 </select>
+                <button type="submit" class="btn btn-secondary btn-lg">Valitse</button>
+            </div>
             </div>
         </form>
 

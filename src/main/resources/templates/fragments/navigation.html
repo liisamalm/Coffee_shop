@@ -7,8 +7,11 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
-          <li class="nav-item">
+         <!--  <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/}">Etusivu</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" th:href="@{/}">Etusivu</a>
           </li>
 
           <li class="nav-item">
@@ -23,8 +26,10 @@
               <a class="nav-link" th:href="@{/tuotteenhallinta}">Nooran sivu</a>
           </li>
 
-          <div sec:authorize="hasAuthority('USER')">
-            <form method="post" action="#" th:action="@{/logout}"><input type="submit" name="logout" value="Logout"/></form>
+          <div class="logout" sec:authorize="hasAuthority('USER')">
+            <form method="post" action="index.html" th:action="@{/logout}">
+              <button type="submit" class="btn btn-light" name="logout" value="Logout">Kirjaudu ulos kauppiaan sivuilta</button>
+            </form>
         </div>
           
         </ul>

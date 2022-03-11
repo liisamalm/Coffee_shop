@@ -2,6 +2,7 @@ package com.example.coffeeshop;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,22 +14,39 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
-    
+
+//määritellään sovelluksen osoitteet, joihin on pääsy kielletty tai pääsy sallittu.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
+       
+                /* .antMatchers("/").permitAll()
+                .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/kahvilaitteet").permitAll()
                 .antMatchers("/kulutustuotteet").permitAll()
                 .antMatchers("/vip").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated(); */
+        http.csrf().disable();  // poistetaan csrf-tarkistus käytöstä h2-konsolin vuoksi
+        http.headers().frameOptions().sameOrigin(); // sallitaan framejen käyttö
+
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/css/**", "/js/**","/fonts/**","/**/favicon.ico", "/about").permitAll()
+                .antMatchers("/h2-console", "/h2-console/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/").permitAll() //pääsy index- sivulle ilman salasanaa
+                .antMatchers(HttpMethod.GET, "/kahvilaitteet", "/kahvilaitteet/*").permitAll() //pääsy index- sivulle ilman salasanaa
+                .antMatchers(HttpMethod.GET, "/kulutustuotteet", "/kulutustuotteet/*").permitAll() //pääsy index- sivulle ilman salasanaa
+                .antMatchers(HttpMethod.GET, "/vip").permitAll() //pääsy index- sivulle ilman salasanaa
+                .anyRequest().authenticated().and()
+                .formLogin().permitAll().and() //kaikilla pääsy kirjautumiseen
+                .logout().permitAll().and()
  
-        http.formLogin()
+        .formLogin()
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/");
+
+       
     }
 
     @Bean

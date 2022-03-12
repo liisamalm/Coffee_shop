@@ -42,6 +42,7 @@ public class ToimittajaService {
         toimittaja.setYhteyshenkilo(yhteushenkilo);
         toimittaja.setYhteyshenkilonEmail(yhteyshenkilonEmail);
         toimittajaRepository.save(toimittaja);
+        
     }
 
     @Transactional

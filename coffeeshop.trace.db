@@ -1,3 +1,18 @@
 2022-02-15 13:42:15 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM VALMISTAJA TUOTE TOIMITTAJA[*]"; SQL statement:
 SELECT * FROM VALMISTAJA TUOTE TOIMITTAJA [42000-200]
+2022-03-12 17:28:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "KUVAUS VARCHAR(255)": "STRINGDECODE('Philips 5000-sarjan HD5120/00 Eco Conscious Edition -kahvinkeitin takaa aromikkaan kahvinautinnon joka hetkeen tyy... (364)"; SQL statement:
+insert into tuote (hinta, kuvaus, nimi, osasto_id, toimittaja_id, tuotekuva, valmistaja_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2022-03-12 17:29:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "KUVAUS VARCHAR(255)": "STRINGDECODE('Philips 5000-sarjan HD5120/00 Eco Conscious Edition -kahvinkeitin takaa aromikkaan kahvinautinnon joka hetkeen tyy... (296)"; SQL statement:
+insert into tuote (hinta, kuvaus, nimi, osasto_id, toimittaja_id, tuotekuva, valmistaja_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2022-03-12 17:29:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "KUVAUS VARCHAR(255)": "STRINGDECODE('Philips 5000-sarjan HD5120/00 Eco Conscious Edition -kahvinkeitin takaa aromikkaan kahvinautinnon joka hetkeen tyy... (296)"; SQL statement:
+insert into tuote (hinta, kuvaus, nimi, osasto_id, toimittaja_id, tuotekuva, valmistaja_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2022-03-12 17:29:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "KUVAUS VARCHAR(255)": "STRINGDECODE('Philips 5000-sarjan HD5120/00 Eco Conscious Edition -kahvinkeitin takaa aromikkaan kahvinautinnon joka hetkeen tyy... (296)"; SQL statement:
+insert into tuote (hinta, kuvaus, nimi, osasto_id, toimittaja_id, tuotekuva, valmistaja_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2022-03-12 17:30:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "KUVAUS VARCHAR(255)": "STRINGDECODE('Kannun sis\u00e4ll\u00e4 oleva k\u00e4tev\u00e4 Aroma twister -suutin sekoittaa valuvan kahvin tasaisesti valmiin ... (291)"; SQL statement:
+insert into tuote (hinta, kuvaus, nimi, osasto_id, toimittaja_id, tuotekuva, valmistaja_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]

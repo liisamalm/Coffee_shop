@@ -3,7 +3,9 @@ package com.example.coffeeshop;
 import java.math.BigDecimal;
 import java.sql.Blob;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -23,7 +25,8 @@ public class Tuote extends AbstractPersistable<Long>{
     private String kuvaus;
     private BigDecimal hinta;
     @Lob
-    private String tuoteKuva;
+    @Basic(fetch = FetchType.EAGER)
+    private byte[] tuotekuva;
 
 
     @ManyToOne

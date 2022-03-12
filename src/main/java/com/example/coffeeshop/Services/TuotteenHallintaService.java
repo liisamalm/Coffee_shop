@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
+
+import javax.transaction.Transactional;
+
 import com.example.coffeeshop.Tuote;
 
 import com.example.coffeeshop.*;
@@ -36,7 +39,7 @@ public class TuotteenHallintaService {
     }
 
     public void addTuote(String nimi, String kuvaus, BigDecimal hinta, MultipartFile tuotekuva, Toimittaja toimittaja, Valmistaja valmistaja, Osasto osasto) throws IOException {
-        Tuote tuote = new Tuote(nimi, kuvaus, hinta, Base64.getEncoder().encodeToString(tuotekuva.getBytes()), toimittaja, valmistaja, osasto);
+        Tuote tuote = new Tuote(nimi, kuvaus, hinta, tuotekuva.getBytes(), toimittaja, valmistaja, osasto);
 
         tuoteRepository.save(tuote);
 
@@ -45,6 +48,28 @@ public class TuotteenHallintaService {
     public Tuote findTuote(Long id) {
         Tuote tuote = tuoteRepository.getById(id);
         return tuote;
+    }
+
+    @Transactional
+    public void deleteOneTuote(Long id) {
+        Tuote tuote = tuoteRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        tuoteRepository.delete(tuote);
+    }
+
+    public byte[] getTuoteImage(Long id) {
+        return tuoteRepository.findById(id).get().getTuotekuva();
+    }
+
+    public void updateTuote(Long id, String nimi, String kuvaus, BigDecimal hinta, MultipartFile tuotekuva) throws IOException {
+        Tuote tuote = tuoteRepository.getById(id);
+        tuote.setNimi(nimi);
+        tuote.setHinta(hinta);
+        tuote.setKuvaus(kuvaus);
+        if(tuotekuva.getBytes() != null)
+            tuote.setTuotekuva(tuotekuva.getBytes());
+        tuoteRepository.save(tuote);
+
     }
     
 }

@@ -77,6 +77,25 @@ public class NoorasController {
         return "tuote";
     }
 
+    // Poistaa tuotteen tietokannasta
+    @GetMapping("/deleteTuote/{id}")
+    public String deleteTuote(@PathVariable("id") long id, Model model) {
+    tuotteenHallintaService.deleteOneTuote(id);
+    return "redirect:/tuotteen-muokkaus";
+    }
+
+    @ResponseBody
+    @GetMapping("/tuote/image/{id}")
+    public byte[] getImage(@PathVariable Long id) {
+        return tuotteenHallintaService.getTuoteImage(id);
+    }
+
+    // Päivittää tuotteen tiedot
+    @PostMapping("/updateTuote/{id}")
+    public String updateTuote(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String kuvaus, @RequestParam BigDecimal hinta, @RequestParam("tuotekuva") MultipartFile tuotekuva) throws IOException {
+        tuotteenHallintaService.updateTuote(id, nimi, kuvaus, hinta, tuotekuva);
+        return "redirect:/tuotteen-muokkaus";
+    }
 // Uloskirjautuminen 
 
 

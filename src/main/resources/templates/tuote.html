@@ -11,6 +11,7 @@
             <form action="#" 
             th:action="@{/updateTuote/{id}(id=${tuote.id})}" 
             th:object="${tuote}" 
+            enctype="multipart/form-data"
             method="post">
                 <label for="nimi">Nimi</label>
                 <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
@@ -21,10 +22,12 @@
                 <label for="hinta">Hinta</label>
                 <input type="number" th:field="*{hinta}" id="hinta" placeholder="Hinta">
                 <span th:if="${#fields.hasErrors('hinta')}" th:errors="*{hinta}"></span> 
-                <!-- <img th:src="*{'data:image/jpg;base64,'+{tuote.tuotekuva}}" alt="">
-                <label for="tuotekuva">Tuotekuva</label>
-                <input type="file" th:field="*{tuotekuva}" id="tuotekuva" placeholder="Tuotekuva">
-                <span th:if="${#fields.hasErrors('tuotekuva')}" th:errors="*{tuotekuva}"></span>  -->
+                <figure>
+                    <img class="img-fluid tuoteImage" th:src="@{/tuote/image/{id}(id=${tuote.id})}" alt="Kuva tuottesta">
+                </figure>
+                <label for="tuotekuva">Vaihda tuotekuvaa:</label>
+                <input type="file" th:field="*{tuotekuva}" id="tuotekuva">
+                <span th:if="${#fields.hasErrors('tuotekuva')}" th:errors="*{tuotekuva}"></span> 
                 <label for="toimittaja">Toimittaja</label>
                 <input type="text" th:field="*{toimittaja.nimi}" id="toimittaja" placeholder="Toimittaja">
                 <span th:if="${#fields.hasErrors('toimittaja.nimi')}" th:errors="*{toimittaja.nimi}"></span>

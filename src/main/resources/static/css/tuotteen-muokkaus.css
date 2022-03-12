@@ -5,3 +5,7 @@
 .form-floating>label {
     color: black;
   }
+
+.tuoteImage {
+    width: 15rem;
+}

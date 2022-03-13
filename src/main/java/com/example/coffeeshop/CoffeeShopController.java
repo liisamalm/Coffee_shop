@@ -28,7 +28,7 @@ public class CoffeeShopController {
     @Autowired
     private RegistrationRepository registrationRepository;
 
-    @GetMapping
+    @GetMapping("*")
     public String home() {
         return "index";
     }

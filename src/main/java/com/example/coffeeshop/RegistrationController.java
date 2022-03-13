@@ -1,6 +1,9 @@
 package com.example.coffeeshop;
 
 import javax.validation.Valid;
+
+import com.example.coffeeshop.Services.RegistrationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,6 +17,9 @@ public class RegistrationController {
     @Autowired
     private RegistrationRepository registrationRepository;
 
+    @Autowired
+    private RegistrationService registrationService;
+
     @ModelAttribute
     private Registration getRegistration() {
         return new Registration();
@@ -25,15 +31,14 @@ public class RegistrationController {
     }
 
     @PostMapping("/registrations")
-    public String register( @Valid
+    public String register(@Valid
             @ModelAttribute Registration registration,
             BindingResult bindingResult) {
                 if (bindingResult.hasErrors()) {
                     return "vip";
                 }
-
-        registrationRepository.save(registration);
-        return "redirect:/index";
+        registrationService.addVip(registration);
+        return "redirect:/";
     }
 
 }

@@ -36,10 +36,10 @@ public class ToimittajaService {
         toimittajaRepository.save(toimittaja);
     }
      
-    public void updateToimittaja(Long id, String nimi, String yhteushenkilo, String yhteyshenkilonEmail) {
+    public void updateToimittaja(Long id, String nimi, String yhteyshenkilo, String yhteyshenkilonEmail) {
         Toimittaja toimittaja = toimittajaRepository.getById(id);
         toimittaja.setNimi(nimi);
-        toimittaja.setYhteyshenkilo(yhteushenkilo);
+        toimittaja.setYhteyshenkilo(yhteyshenkilo);
         toimittaja.setYhteyshenkilonEmail(yhteyshenkilonEmail);
         toimittajaRepository.save(toimittaja);
     }

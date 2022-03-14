@@ -58,10 +58,10 @@ public class CoffeeShopController {
         return "kahvilaite";
     }
 
-    @GetMapping("/kulutustuotteet")
-    public String products() {
-        return "kulutustuotteet";
-    }
+    // @GetMapping("/kulutustuotteet")
+    // public String products() {
+    //     return "kulutustuotteet";
+    // }
 
     @GetMapping("/tuotteenhallinta")
     public String productMaintenance() {

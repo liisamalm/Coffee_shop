@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.headers().frameOptions().sameOrigin(); // sallitaan framejen käyttö
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/css/**","/images/**", "/js/**","/fonts/**","/**/favicon.ico", "/about", "/kahvilaite/tuoteKuva/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/css/**","/images/**", "/js/**","/fonts/**","/**/favicon.ico", "/about", "/kahvilaite/tuoteKuva/**", "/kulutustuote/tuoteKuva/**").permitAll()
                 .antMatchers("/h2-console", "/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/").permitAll() //pääsy sivulle ilman salasanaa
                 .antMatchers(HttpMethod.GET, "/kahvilaitteet", "/kahvilaitteet/*").permitAll() 

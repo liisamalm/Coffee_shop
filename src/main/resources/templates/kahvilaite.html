@@ -2,22 +2,33 @@
 <html lang="en">
 <head th:replace="fragments/head :: head-fragment('Coffee Shop')"></head>
 <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
-  <header th:replace="fragments/header :: header-fragment"></header>  
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <main class="px-3">
-        <h1>Nooran Kahvikauppa</h1>
-        <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
-        <p class="lead">
-          <a th:href="@{/vip}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Rekisteröidy VIP asiakkaaksi</a>
-        </p>
-
-        <h1>Tässä näytetään yhden kahvilaitteen tiedot!</h1>
-        <!-- <figure>
-          <img src="/images/grey.jpg" alt="coffee beans">
-        </figure> -->
-      </main>
-    
-    <footer th:replace="fragments/footer :: footer-fragment"></footer>  
+  <header th:replace="fragments/header :: header-fragment"></header>
+  
+   
+     <!--  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> -->
+        <div class="background-product">
+        <main class="px-3">
+              <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                  <h1 th:text="${kahvilaite.nimi}" class="featurette-heading"></h1>
+                  <p>Tuotteen kuvaus: </p> <span th:text="${kahvilaite.kuvaus}"></span>
+                  <hr>
+                  <p>Tuotteen hinta: </p>
+                  <p th:text="${kahvilaite.hinta} + ' €'" class="lead" ></p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                  <figure class="detail-img">
+                    <img th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuotteesta">
+                  </figure>
+                
+              </div>
+      
+      
+      
+        </main>
     </div>
+    
+          <footer th:replace="fragments/footer :: footer-fragment"></footer>  
+     <!--  </div> -->
     </body>
 </html>

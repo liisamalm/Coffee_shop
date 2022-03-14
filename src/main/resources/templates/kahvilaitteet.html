@@ -6,22 +6,22 @@
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
         <main class="px-3">
-        <h1>Liisan & Jannan Coffee Shop</h1>
+        <h1>Nooran Kahvikauppa</h1>
         <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
         
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div th:each="kahvilaite : ${kahvilaitteet}" class="col">
               <div class="card shadow-sm">
-                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                 <figure>
-                    <a th:href="@{/kahvilaite/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuottesta"></a>
+                    <a th:href="@{/kahvilaitteet/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuottesta"></a>
+                    <!-- a th:href="@{/kahvilaite/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuottesta"></a> -->
                 </figure>
     
                 <div class="card-body">
                   <p th:text="${kahvilaite.nimi}"></p>  
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <h5 th:text="'Hinta: ' + ${kahvilaite.hinta} + '€'"></h5>
+                      <h5 th:text="'Hinta: ' + ${kahvilaite.hinta} + ' €'"></h5>
                     </div>
                   </div>
                 </div>

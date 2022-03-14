@@ -18,55 +18,12 @@ import lombok.val;
 @Controller
 public class CoffeeShopController {
     
-    @Autowired
-    private TuoteRepository tuoteRepository;
-
-    @Autowired
-    private OsastoRepository osastoRepository;
-
-    @Autowired
-    private ToimittajaRepository toimittajaRepository;
-
-    @Autowired
-    private ValmistajaRepository valmistajaRepository;
-
-    @Autowired
-    private RegistrationRepository registrationRepository;
-
-    @Autowired
-    private TuotteenHallintaService tuotteenHallintaService;
-
     @GetMapping
     public String home() {
         return "index";
     }
    
-    @GetMapping("/kahvilaitteet")
-    public String machines(Model model) {
-        model.addAttribute("kahvilaitteet", tuoteRepository.findAllKahvilaitteet());
-        return "kahvilaitteet";
-    }
-
-    @ResponseBody
-    @GetMapping("/kahvilaite/tuoteKuva/{id}")
-    public byte[] getImage(@PathVariable Long id) {
-        return tuotteenHallintaService.getTuoteImage(id);
-    }
-
-    @GetMapping("/kahvilaite/{id}")
-    public String showOneKahvilaite() {
-        return "kahvilaite";
-    }
-
-    @GetMapping("/kulutustuotteet")
-    public String products() {
-        return "kulutustuotteet";
-    }
-
-    @GetMapping("/tuotteenhallinta")
-    public String productMaintenance() {
-        return "tuotteenhallinta";
-    }
+    
 
    
 }

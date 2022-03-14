@@ -14,11 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class CoffeeProductsController {
 
-    @GetMapping("/kulutustuotteet")
-    public String products() {
-        return "kulutustuotteet";
-    }
-    
     @Autowired
     private TuoteRepository tuoteRepository;
 

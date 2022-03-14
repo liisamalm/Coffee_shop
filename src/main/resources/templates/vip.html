@@ -18,6 +18,7 @@
   
                           <form action="#" th:action="@{/registrations}" th:object="${registration}" method="POST">
                               <table>
+
                                 <div class="form-floating mb-4">
                                   <input type="text" th:field="*{name}" id="form3Example1cg" class="form-control form-control-lg" />
                                   <label class="form-label" for="form3Example1cg">Etunimi ja sukunimi</label>
@@ -27,20 +28,48 @@
                                 <div class="form-floating mb-4">
                                   <input type="text" th:field="*{address}" id="form3Example1cg" class="form-control form-control-lg" />
                                   <label class="form-label" for="form3Example1cg">Osoite</label>
-                                  <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Name Virheviesti></p>
+                                  <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Virheviesti></p>
                                 </div>
 
                                 <div class="form-floating mb-4">
                                   <input type="email" th:field="*{email}" id="form3Example3cg" class="form-control form-control-lg" />
                                   <label class="form-label" for="form3Example3cg">Sähköposti</label>
-                                  <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Virheviesti></p>
+                                  <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Virheviesti></p>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                  <input type="text" th:field="*{username}" id="form3Example1cg" class="form-control form-control-lg" />
+                                  <label class="form-label" for="form3Example1cg">Käyttäjätunnus</label>
+                                  <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Virheviesti></p>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                  <input type="text" th:field="*{password}" id="form3Example3cg" class="form-control form-control-lg" />
+                                  <label class="form-label" for="form3Example3cg">Salasana</label>
+                                  <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Virheviesti></p>
+                                </div>
 
                                   <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Rekisteröidy</button>
                                   </div>
-                  
-                                </div>
-                                <!-- <form action="#" th:action="@{/registrations}" th:object="${registration}" method="POST">
+
+                              </table>
+                          </form>
+                        </div>
+                      <!-- </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+      </div>
+  </body>
+</html>
+ 
+
+
+ <!-- <form action="#" th:action="@{/registrations}" th:object="${registration}" method="POST">
                                   <table>
                                   <tr>
                                       <td>Name: </td>
@@ -62,17 +91,3 @@
                                    <tr>
                                       <td><button type="submit">Submit</button></td>
                                   </tr> -->
-                              </table>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </main>
-      </div>
-  </body>
-</html>
- 

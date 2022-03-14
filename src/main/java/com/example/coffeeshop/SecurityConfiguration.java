@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  
 @Configuration
@@ -36,6 +38,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.GET, "/kulutustuotteet", "/kulutustuotteet/*").permitAll() 
                 .antMatchers(HttpMethod.GET, "/vip").permitAll() 
                 .antMatchers(HttpMethod.POST, "/vip").permitAll() 
+                .antMatchers(HttpMethod.GET, "/registrations").permitAll() 
+                .antMatchers(HttpMethod.POST, "/registrations").permitAll() 
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and() //kaikilla pääsy kirjautumiseen
                 .logout().permitAll().and()
@@ -46,9 +50,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
+        }
+        /* @Bean 
+        public PasswordEncoder passwordEncoder() { 
+                return new BCryptPasswordEncoder(); 
+} */
 
-       
-    }
 
     @Bean
     @Override

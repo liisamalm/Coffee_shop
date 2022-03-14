@@ -96,9 +96,5 @@ public class NoorasController {
         tuotteenHallintaService.updateTuote(id, nimi, kuvaus, hinta, tuotekuva);
         return "redirect:/tuotteen-muokkaus";
     }
-// Uloskirjautuminen 
-
-
-
 
 }

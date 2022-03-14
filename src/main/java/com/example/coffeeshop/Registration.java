@@ -25,5 +25,11 @@ public class Registration extends AbstractPersistable<Long> {
     @Email
     private String email;
 
+    @Size(min = 4, max = 10)
+    private String username;
+
+    @Size(min = 4, max = 20)
+    private String password;
+
 
 }

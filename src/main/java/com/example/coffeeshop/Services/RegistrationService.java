@@ -1,5 +1,7 @@
 package com.example.coffeeshop.Services;
 
+import java.util.List;
+
 import com.example.coffeeshop.Registration;
 import com.example.coffeeshop.RegistrationRepository;
 
@@ -16,6 +18,13 @@ private RegistrationRepository registrationRepository;
 public void addVip(@ModelAttribute Registration registration) {
     registrationRepository.save(registration);
     }
-    
+
+public List<Registration> getAllRegistrations() {
+    return registrationRepository.findAll();  
+}
+
+
+
+
 }
 

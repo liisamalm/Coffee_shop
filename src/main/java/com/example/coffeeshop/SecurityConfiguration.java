@@ -29,12 +29,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.headers().frameOptions().sameOrigin(); // sallitaan framejen käyttö
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/css/**", "/js/**","/fonts/**","/**/favicon.ico", "/about").permitAll()
+                .antMatchers(HttpMethod.GET, "/css/**","/images/**", "/js/**","/fonts/**","/**/favicon.ico", "/about").permitAll()
                 .antMatchers("/h2-console", "/h2-console/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/").permitAll() //pääsy index- sivulle ilman salasanaa
-                .antMatchers(HttpMethod.GET, "/kahvilaitteet", "/kahvilaitteet/*").permitAll() //pääsy index- sivulle ilman salasanaa
-                .antMatchers(HttpMethod.GET, "/kulutustuotteet", "/kulutustuotteet/*").permitAll() //pääsy index- sivulle ilman salasanaa
-                .antMatchers(HttpMethod.GET, "/vip").permitAll() //pääsy index- sivulle ilman salasanaa
+                .antMatchers(HttpMethod.GET, "/").permitAll() //pääsy sivulle ilman salasanaa
+                .antMatchers(HttpMethod.GET, "/kahvilaitteet", "/kahvilaitteet/*").permitAll() 
+                .antMatchers(HttpMethod.GET, "/kulutustuotteet", "/kulutustuotteet/*").permitAll() 
+                .antMatchers(HttpMethod.GET, "/vip").permitAll() 
+                .antMatchers(HttpMethod.POST, "/vip").permitAll() 
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and() //kaikilla pääsy kirjautumiseen
                 .logout().permitAll().and()

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+ xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="fragments/head :: head-fragment('Coffee Shop')"></head>
   <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
     <header th:replace="fragments/header :: header-fragment"></header>
@@ -11,8 +11,8 @@
           <div class="mask d-flex align-items-center gradient-custom-3">
             <div class="container">
               <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-10">
-                  <div class="card" style="border-radius: 15px;">
+               <!--  <div class="col-12 col-md-9 col-lg-7 col-xl-10">
+                  <div class="card" style="border-radius: 15px;"> -->
                     <div class="card-body p-5">
                       <h2 class="text-uppercase text-center mb-5">Rekisteröidy VIP-asiakkaaksi tästä:</h2>
   
@@ -40,24 +40,26 @@
                                   </div>
                   
                                 </div>
-                                  <!-- <tr>
+                                <!-- <form action="#" th:action="@{/registrations}" th:object="${registration}" method="POST">
+                                  <table>
+                                  <tr>
                                       <td>Name: </td>
                                       <td><input type="text" th:field="*{name}" /></td>
                                       <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Virheviesti</td>
-                                  </tr> -->
+                                  </tr> 
 
 
-                                  <!-- <tr>
+                                   <tr>
                                       <td>Address </td>
                                       <td><input type="text" th:field="*{address}" /></td>
                                       <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Virheviesti</td>
-                                  </tr> -->
-                                  <!-- <tr>
+                                  </tr> 
+                                   <tr>
                                       <td>Email: </td>
                                       <td><input type="text" th:field="*{email}" /></td>
                                       <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Virheviesti</td>
-                                  </tr> -->
-                                  <!-- <tr>
+                                  </tr> 
+                                   <tr>
                                       <td><button type="submit">Submit</button></td>
                                   </tr> -->
                               </table>

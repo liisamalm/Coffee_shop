@@ -6,23 +6,27 @@
 <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
   <header th:replace="fragments/header :: header-fragment"></header>  
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <main class="px-3">
-            <h1>Valmistaja</h1>
-            <form action="#" 
-            th:action="@{/update/{id}(id=${valmistaja.id})}" 
-            th:object="${valmistaja}" 
-            method="post">
-                <label for="nimi">Nimi</label>
-                <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
-                <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
-                <label for="url">Url</label>
-                <input type="text" th:field="*{url}" id="url" placeholder="Url">
-                <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
-                <input type="submit" value="Päivitä">  
-                <button class="btn btn-danger"><a th:href="@{/delete/{id}(id=${valmistaja.id})}">Poista</a> </button>
-            </form>
-
-        </main>
+        <div class="opacity">
+            <main class="px-3">
+                <h1 th:text="${valmistaja.nimi}"></h1>
+                <form action="#"
+                th:action="@{/update/{id}(id=${valmistaja.id})}"
+                th:object="${valmistaja}"
+                method="post">
+                
+                    <div class="mb-3">
+                        <label class="form-label" for="nimi">Nimi:</label>
+                        <input class="form-control" type="text" th:field="*{nimi}" id="name" placeholder="Name">
+                        <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
+                    </div>
+                    <label class="form-label" for="url">Url:</label>
+                    <input class="form-control" type="text" th:field="*{url}" id="url" placeholder="Url">
+                    <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                    <input class="btn btn-info" type="submit" value="Päivitä">
+                    <button class="btn btn-danger"><a th:href="@{/delete/{id}(id=${valmistaja.id})}">Poista</a> </button>
+                </form>
+            </main>
+        </div>
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>

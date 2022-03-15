@@ -6,14 +6,14 @@
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
         <main class="px-3">
-        <h1>Liisan & Jannan Coffee Shop</h1>
+        <h1>Nooran Kahvikauppa</h1>
         <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
         
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div th:each="kulutustuote : ${kulutustuotteet}" class="col">
               <div class="card shadow-sm">
                 <figure>
-                    <a th:href="@{/kulutustuote/{id}(id=${kulutustuote.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kulutustuote/tuoteKuva/{id}(id=${kulutustuote.id})}" alt="Kuva tuottesta"></a>
+                    <a th:href="@{/kulutustuotteet/{id}(id=${kulutustuote.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kulutustuote/tuoteKuva/{id}(id=${kulutustuote.id})}" alt="Kuva tuotteesta"></a>
                 </figure>
     
                 <div class="card-body tuotetiedot">

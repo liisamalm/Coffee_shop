@@ -1,5 +1,6 @@
-.btn-lg {
-    margin-bottom: 1em;
+.btn-light {
+    
+    margin-top: 1em;
 }
 
 .form-floating>label {
@@ -19,3 +20,15 @@
 .tuote-kuva {
     height: 10rem;
 }
+label {
+    text-shadow: none;
+}
+option {
+    background-color: azure;
+}
+.form-select{
+    background-color: azure;
+}
+/* .opacity {
+    background-color:#346582bd;
+} */

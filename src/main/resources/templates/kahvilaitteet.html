@@ -19,10 +19,8 @@
             <div th:each="kahvilaite : ${kahvilaitteet}" class="col">
               <div class="card shadow-sm">
                 <figure>
-                    <a th:href="@{/kahvilaitteet/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuottesta"></a>
-                    <!-- a th:href="@{/kahvilaite/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuottesta"></a> -->
+                    <a th:href="@{/kahvilaitteet/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuotteesta"></a>
                 </figure>
-    
                 <div class="card-body">
                   <p th:text="${kahvilaite.nimi}"></p>  
                   <div class="d-flex justify-content-between align-items-center">
@@ -34,9 +32,8 @@
               </div>
             </div>
             
+            </div>  
         </div>
-      </div>
-
         </main>
 <footer th:replace="fragments/footer :: footer-fragment"></footer>
     </div>

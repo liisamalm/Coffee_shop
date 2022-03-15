@@ -66,14 +66,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
+        UserDetails noora = User.withDefaultPasswordEncoder()
                 .username("noora")
                 .password("salasana")
+                .authorities("ADMIN")
+                .build();
+
+        UserDetails vip = User.withDefaultPasswordEncoder()
+                .username("asiakas")
+                .password("vip")
                 .authorities("USER")
                 .build();
         
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(user);
+        manager.createUser(noora);
+        manager.createUser(vip);
         return manager;
     }
 

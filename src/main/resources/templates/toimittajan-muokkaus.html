@@ -8,59 +8,59 @@
     <header th:replace="fragments/header :: header-fragment"></header>
     
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <main class="px-3">
-        <h1>Toimittaja</h1>
-        <p class="lead">Täällä voit lisätä uuden toimittajan tai muuttaa olemassa olevan toimittajan tietoja</p>
-        
-<!-- Toimittajan lisäys -->
-
-            <h1 class="h3 mb-3 fw-normal">Lisää uusi toimittaja</h1>
-        <form class="form-signin" th:action="@{/toimittajan-muokkaus/}" method="POST">
-            <div class="form-floating">
-                <input type="text" class="form-control" name="nimi" placeholder="text" required>
-                <label for="floatingToimittajanNimi">Toimittajan nimi</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" name="yhteyshenkilo" placeholder="Yhteyshenkilo" required>
-                <label for="floatingToimittajanYhteyshenkilö">Yhteyshenkilö</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" name="yhteyshenkilonEmail" placeholder="email" required>
-                <label for="floatingYhteyshenkilonSahkoposti">Yhteyshenkilön Sähköposti</label>
-            </div>
-            <button type="submit" class="btn btn-secondary btn-lg">Lisää</button>
-        </form>
+      <div class="opacity">
+          <main class="px-3">
+            <h1>Toimittaja</h1>
+            <p class="lead">Täällä voit lisätä uuden toimittajan tai muuttaa olemassa olevan toimittajan tietoja</p>
             
-            
-
-<hr> 
-         <!-- Toimittajan muokkaus -->
-             <form class="form-signin" th:action="@{/toimittajan-muokkaus/{id}}" method="get" >
-                 <h1 class="h3 mb-3 fw-normal">Valitse toimittaja jonka tietoja haluat päivittää:</h1>
-                 <div class="form-floating" >
-                    <select class="form-select" name="id">
-                        <option selected>Toimittajan nimi</option>
-                        <option
-                                th:each="toimittaja : ${toimittajat}"
-                                th:text="${toimittaja.nimi}"
-                                th:value="${toimittaja.id}">
-                        </option>
-                    </select>
-                    <button type="submit" class="btn btn-secondary btn-lg">Valitse</button>
+          <!-- Toimittajan lisäys -->
+                <h1 class="h3 mb-3 fw-normal">Lisää uusi toimittaja</h1>
+            <form class="form-signin" th:action="@{/toimittajan-muokkaus/}" method="POST">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="nimi" placeholder="text" required>
+                    <label for="floatingToimittajanNimi">Toimittajan nimi</label>
                 </div>
-             </form> 
-            
-            <!-- <section th:action="@{/toimittajan-muokkaus/{id}}" method="GET" >
-                <ul>
-                    <li th:each="toimittaja : ${toimittajat}">
-                        <a th:href="@{/toimittajat/{id}(id=${toimittaja.id})}">
-                            <span th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">Toimittajan nimi</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>-->
-
-      </main>
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="yhteyshenkilo" placeholder="Yhteyshenkilo" required>
+                    <label for="floatingToimittajanYhteyshenkilö">Yhteyshenkilö</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="yhteyshenkilonEmail" placeholder="email" required>
+                    <label for="floatingYhteyshenkilonSahkoposti">Yhteyshenkilön Sähköposti</label>
+                </div>
+                <button type="submit" class="btn btn-light">Lisää</button>
+            </form>
+          
+                
+          
+          <hr>
+             <!-- Toimittajan muokkaus -->
+                 <form class="form-signin" th:action="@{/toimittajan-muokkaus/{id}}" method="get" >
+                     <h1 class="h3 mb-3 fw-normal">Valitse toimittaja jonka tietoja haluat päivittää:</h1>
+                     <div class="form-floating" >
+                        <select class="form-select" name="id">
+                            <option selected>Toimittajan nimi</option>
+                            <option
+                                    th:each="toimittaja : ${toimittajat}"
+                                    th:text="${toimittaja.nimi}"
+                                    th:value="${toimittaja.id}">
+                            </option>
+                        </select>
+                        <button type="submit" class="btn btn-light">Valitse</button>
+                    </div>
+                 </form>
+          
+                <!-- <section th:action="@{/toimittajan-muokkaus/{id}}" method="GET" >
+                    <ul>
+                        <li th:each="toimittaja : ${toimittajat}">
+                            <a th:href="@{/toimittajat/{id}(id=${toimittaja.id})}">
+                                <span th:text="${toimittaja.nimi}" th:value="${toimittaja.id}">Toimittajan nimi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>-->
+          </main>
+      </div>
     
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  
     </div>

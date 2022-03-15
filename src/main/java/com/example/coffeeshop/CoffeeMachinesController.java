@@ -3,6 +3,7 @@ package com.example.coffeeshop;
 import com.example.coffeeshop.Services.TuotteenHallintaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,18 +34,11 @@ public class CoffeeMachinesController {
 
     @GetMapping("/kahvilaitteet/{id}")
     public String showOneKahvilaite(Model model, @PathVariable Long id) {
-        model.addAttribute("kahvilaite", tuoteRepository.getById(id));
+        model.addAttribute("kahvilaite", tuotteenHallintaService.findTuote(id));
         return "kahvilaite";
     }
-
-    /* @GetMapping("/kahvilaite/{id}")
-    public String showOneKahvilaite(Model model, @PathVariable Long id) {
-        model.addAttribute("kahvilaite", tuoteRepository.getById(id));
-        return "kahvilaite";
-    }
- */
     
-
+    @Secured("ADMIN")
     @GetMapping("/tuotteenhallinta")
     public String productMaintenance() {
         return "tuotteenhallinta";

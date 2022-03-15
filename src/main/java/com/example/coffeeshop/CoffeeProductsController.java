@@ -32,9 +32,14 @@ public class CoffeeProductsController {
         return tuotteenHallintaService.getTuoteImage(id);
     }
 
-    @GetMapping("/kulutustuote/{id}")
-    public String showOneKulutustuote() {
+    @GetMapping("/kulutustuotteet/{id}")
+    public String showOneKulutustuote(Model model, @PathVariable Long id) {
+        model.addAttribute("kulutustuote", tuotteenHallintaService.findTuote(id));
         return "kulutustuote";
     }
+    /* @GetMapping("/kulutustuote/{id}")
+    public String showOneKulutustuote() {
+        return "kulutustuote";
+    } */
 
 }

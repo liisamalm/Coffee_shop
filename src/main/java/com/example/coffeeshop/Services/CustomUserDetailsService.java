@@ -1,6 +1,8 @@
 /* package com.example.coffeeshop.Services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.example.coffeeshop.Registration;
 import com.example.coffeeshop.RegistrationRepository;
@@ -19,26 +21,30 @@ public class CustomUserDetailsService implements UserDetailsService{
     @Autowired
     private RegistrationRepository registrationRepository;
 
+    
+    @Autowired
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Registration registration = registrationRepository.findByUsername(username);
         if (registration == null) {
             throw new UsernameNotFoundException("No such user: " + username);
         }
+        
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (String authority : registration.getAuthorities()) {
+            authorities.add(new SimpleGrantedAuthority(authority));
+        }
 
         return new org.springframework.security.core.userdetails.User(
-                /* registration.getName(),
-                registration.getAddress(),
-                registration.getEmail(), */
-                /* registration.getUsername(),
+                registration.getUsername(),
                 registration.getPassword(),
                 true,
                 true,
                 true,
                 true,
-                
-                Arrays.asList(new SimpleGrantedAuthority("USER")));
+                authorities);
     }
 }
 
- */ 
+  */

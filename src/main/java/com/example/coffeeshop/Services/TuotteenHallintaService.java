@@ -4,6 +4,7 @@ package com.example.coffeeshop.Services;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Base64;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -70,6 +71,13 @@ public class TuotteenHallintaService {
             tuote.setTuotekuva(tuotekuva.getBytes());
         tuoteRepository.save(tuote);
 
+    }
+
+    public Collection<Tuote> listAll(String hakusana) {
+        if (hakusana != null) {
+            return tuoteRepository.findWithSearchIgnoreCase(hakusana);
+        }
+        return tuoteRepository.findAllKahvilaitteet();
     }
 
     

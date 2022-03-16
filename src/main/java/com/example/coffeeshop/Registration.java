@@ -38,5 +38,4 @@ public class Registration extends AbstractPersistable<Long> {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorities;
 
-
 }

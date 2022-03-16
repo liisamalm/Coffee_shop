@@ -6,26 +6,38 @@
 <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
   <header th:replace="fragments/header :: header-fragment"></header>  
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <main class="px-3">
-            <h1>Toimittaja</h1>
-            <form action="#" 
-            th:action="@{/updateToimittaja/{id}(id=${toimittaja.id})}" 
-            th:object="${toimittaja}" 
-            method="post">
-                <label for="nimi">Nimi</label>
-                <input type="text" th:field="*{nimi}" id="name" placeholder="Name">
-                <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
-                <label for="yhteyshenkilo">Yhteyshenkilö</label>
-                <input type="text" th:field="*{yhteyshenkilo}" id="yhteyshenkilo" placeholder="Yhteyshenkilö">
-                <span th:if="${#fields.hasErrors('yhteyshenkilo')}" th:errors="*{yhteyshenkilo}"></span>
-                <label for="yhteyshenkilonEmail">Email</label>
-                <input type="text" th:field="*{yhteyshenkilonEmail}" id="yhteyshenkilonEmail" placeholder="yhteyshenkilonEmail">
-                <span th:if="${#fields.hasErrors('yhteyshenkilonEmail')}" th:errors="*{yhteyshenkilonEmail}"></span>
-                <input type="submit" value="Päivitä">  
-                <button class="btn btn-danger"><a th:href="@{/deleteToimittaja/{id}(id=${toimittaja.id})}">Poista</a> </button>
-            </form>
-
-        </main>
+        <div class="opacity">
+            <a th:href="@{/tuotteen-muokkaus}" class="backbutton"><button type="button" class="btn btn-light btn-sm"><i class="fas fa-angle-left"></i> Back</button></a>
+            <main class="px-3">
+                <h1>Toimittaja</h1>
+                <form action="#"
+                th:action="@{/updateToimittaja/{id}(id=${toimittaja.id})}"
+                th:object="${toimittaja}"
+                method="post">
+                    <div class="mb-3">
+                        <label class="form-label"  for="nimi">Nimi</label>
+                        <input class="form-control" type="text" th:field="*{nimi}" id="name" placeholder="Name">
+                        <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="yhteyshenkilo">Yhteyshenkilö</label>
+                        <input class="form-control" type="text" th:field="*{yhteyshenkilo}" id="yhteyshenkilo" placeholder="Yhteyshenkilö">
+                        <span th:if="${#fields.hasErrors('yhteyshenkilo')}" th:errors="*{yhteyshenkilo}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="yhteyshenkilonEmail">Email</label>
+                        <input class="form-control" type="text" th:field="*{yhteyshenkilonEmail}" id="yhteyshenkilonEmail" placeholder="yhteyshenkilonEmail">
+                        <span th:if="${#fields.hasErrors('yhteyshenkilonEmail')}" th:errors="*{yhteyshenkilonEmail}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-light" type="submit"><i class="fas fa-edit"></i> Päivitä</button>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-danger"><a th:href="@{/deleteToimittaja/{id}(id=${toimittaja.id})}"><i class="fas fa-exclamation-triangle"></i> Poista</a> </button>
+                    </div>
+                </form>
+            </main>
+        </div>
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>

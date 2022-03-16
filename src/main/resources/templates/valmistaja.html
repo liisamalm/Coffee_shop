@@ -7,6 +7,7 @@
   <header th:replace="fragments/header :: header-fragment"></header>  
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <div class="opacity">
+            <a th:href="@{/valmistajan-muokkaus}" class="backbutton"><button type="button" class="btn btn-light btn-sm"><i class="fas fa-angle-left"></i> Back</button></a>
             <main class="px-3">
                 <h1 th:text="${valmistaja.nimi}"></h1>
                 <form action="#"
@@ -19,11 +20,20 @@
                         <input class="form-control" type="text" th:field="*{nimi}" id="name" placeholder="Name">
                         <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></span>
                     </div>
-                    <label class="form-label" for="url">Url:</label>
-                    <input class="form-control" type="text" th:field="*{url}" id="url" placeholder="Url">
-                    <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
-                    <input class="btn btn-info" type="submit" value="Päivitä">
-                    <button class="btn btn-danger"><a th:href="@{/delete/{id}(id=${valmistaja.id})}">Poista</a> </button>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="url">Url:</label>
+                        <input class="form-control" type="text" th:field="*{url}" id="url" placeholder="Url">
+                        <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-light" type="submit"><i class="fas fa-edit"></i> Päivitä</button>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-danger"><a th:href="@{/delete/{id}(id=${valmistaja.id})}"><i class="fas fa-exclamation-triangle"></i> Poista</a> </button>
+                    </div>
+                
+                    
                 </form>
             </main>
         </div>
@@ -34,3 +44,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
     </body>
 </html>
+
+<!-- <i class="fas fa-edit"></i> -->

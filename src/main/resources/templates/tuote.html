@@ -8,6 +8,7 @@
     
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <div class="opacity">
+            <a th:href="@{/tuotteen-muokkaus}" class="backbutton"><button type="button" class="btn btn-light btn-sm"><i class="fas fa-angle-left"></i> Back</button></a>
         <main class="px-3">
             
                 <h1 th:text="${tuote.nimi}"></h1>
@@ -58,8 +59,12 @@
                         <input class="form-control mb-3" type="text" th:field="*{osasto.nimi}" id="osasto" placeholder="Osasto">
                         <span th:if="${#fields.hasErrors('osasto.nimi')}" th:errors="*{osasto.nimi}"></span>
                     </div-mb-3>
-                    <input class="btn btn-info" id="update-nappi" type="submit" value="Päivitä">
-                    <button class="btn btn-danger"><a th:href="@{/deleteTuote/{id}(id=${tuote.id})}">Poista koko tuote</a> </button>
+                    <div class="mb-3">
+                        <button class="btn btn-light" type="submit"><i class="fas fa-edit"></i> Päivitä</button>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-danger"><a th:href="@{/deleteTuote/{id}(id=${tuote.id})}"><i class="fas fa-exclamation-triangle"></i> Poista</a> </button>
+                    </div>
                 </form>
             </main>
             </div>

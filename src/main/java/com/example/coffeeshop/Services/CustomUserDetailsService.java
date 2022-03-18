@@ -1,50 +1,31 @@
-/* package com.example.coffeeshop.Services;
+package com.example.coffeeshop.Services;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 
-import com.example.coffeeshop.Registration;
-import com.example.coffeeshop.RegistrationRepository;
+import com.example.coffeeshop.CustomUserDetail;
 
+import com.example.coffeeshop.UserData;
+import com.example.coffeeshop.UserRepository; 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
-
-    @Autowired
-    private RegistrationRepository registrationRepository;
-
     
     @Autowired
-
-    @Override
+    private UserRepository userRepository;
+    
+     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    Registration registration = registrationRepository.findByUsername(username);
-        if (registration == null) {
-            throw new UsernameNotFoundException("No such user: " + username);
-        }
-        
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for (String authority : registration.getAuthorities()) {
-            authorities.add(new SimpleGrantedAuthority(authority));
+        UserData customer = userRepository.findByUsername(username).get();
+        if(customer == null){
+            throw new UsernameNotFoundException("No such user " + username);
         }
 
-        return new org.springframework.security.core.userdetails.User(
-                registration.getUsername(),
-                registration.getPassword(),
-                true,
-                true,
-                true,
-                true,
-                authorities);
+        return new CustomUserDetail(customer);
     }
-}
+} 
 
-  */

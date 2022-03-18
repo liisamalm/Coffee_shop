@@ -22,19 +22,26 @@
             <a class="nav-link" th:href="@{/kulutustuotteet}">Kulutustuotteet</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/registrations}">Rekisteröidy VIP-asiakkaaksi</a>
+            <a class="nav-link" th:href="@{/registration}">Rekisteröidy VIP-asiakkaaksi</a>
           </li>
-         <!--  <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" th:href="@{/signin}">Kirjaudu sisään</a>
           </li>
- -->
+
             <li class="nav-item">
               <a class="nav-link" th:href="@{/tuotteenhallinta}">Nooran sivu</a>
           </li>
 
+          
           <div class="logout" sec:authorize="hasAuthority('ADMIN')">
             <form method="post" action="index.html" th:action="@{/logout}">
               <button type="submit" class="btn btn-light" name="logout" value="Logout">Admin logout</button>
+            </form>
+        </div>
+
+          <div class="logout" sec:authorize="hasAuthority('USER')">
+            <form method="post" action="index.html" th:action="@{/logout}">
+              <button type="submit" class="btn btn-light" name="logout" value="Logout">Kirjaudu ulos VIP</button>
             </form>
         </div>
         </ul>

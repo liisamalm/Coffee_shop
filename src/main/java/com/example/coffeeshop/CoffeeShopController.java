@@ -22,6 +22,11 @@ public class CoffeeShopController {
     public String home() {
         return "index";
     }
+
+    @GetMapping("/signin")
+    public String vipHome() {
+        return "index";
+    }
    
     
 

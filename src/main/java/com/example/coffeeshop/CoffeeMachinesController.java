@@ -1,6 +1,7 @@
 package com.example.coffeeshop;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.example.coffeeshop.Services.TuotteenHallintaService;
 
@@ -17,27 +18,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CoffeeMachinesController {
     
     @Autowired
-    private TuoteRepository tuoteRepository;
-
-    @Autowired
     private TuotteenHallintaService tuotteenHallintaService;
 
-
+    // Näyttää kahvilaitteet-sivulla laitteet, joko kaikki tai hakusanan perusteella
     @GetMapping(path= {"/kahvilaitteet", "/search"})
     public String machines(Model model, @Param("hakusana") String hakusana) {
-        Collection<Tuote> listProducts = tuotteenHallintaService.listAll(hakusana);
-        // model.addAttribute("kahvilaitteet", tuoteRepository.findAllKahvilaitteet());
+        List<Tuote> listProducts = tuotteenHallintaService.listAllKahvilaitteetHakusanalla(hakusana);
         model.addAttribute("kahvilaitteet", listProducts);
-        // model.addAttribute("hakusana", hakusana);
         return "kahvilaitteet";
     }
 
+    // Hakee tuotteen kuvan tietokannasta
     @ResponseBody
     @GetMapping("/kahvilaite/tuoteKuva/{id}")
     public byte[] getImage(@PathVariable Long id) {
         return tuotteenHallintaService.getTuoteImage(id);
     }
 
+    // Näyttää yhden kahvilaitteen tiedot id:n perusteella ja ohjaa kahvilaite-sivulle
     @GetMapping("/kahvilaitteet/{id}")
     public String showOneKahvilaite(Model model, @PathVariable Long id) {
         model.addAttribute("kahvilaite", tuotteenHallintaService.findTuote(id));

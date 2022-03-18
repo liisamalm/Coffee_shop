@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="kuvaus">Kuvaus:</label>
-                        <textarea class="form-control" th:field="*{kuvaus}" id="kuvaus" placeholder="Kuvaus" rows="3">
+                        <textarea maxlength="255" class="form-control" th:field="*{kuvaus}" id="kuvaus" placeholder="Kuvaus" rows="3">
                         <span th:if="${#fields.hasErrors('kuvaus')}" th:errors="*{kuvaus}"></span></textarea>
                     </div>
                     <div class="mb-3">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="tuotekuva">Vaihda tuotekuvaa:</label>
-                        <input class="form-control" type="file" th:field="*{tuotekuva}" id="tuotekuva">
+                        <input class="form-control" type="file" th:field="*{tuotekuva}" id="tuotekuva" required>
                         <span th:if="${#fields.hasErrors('tuotekuva')}" th:errors="*{tuotekuva}"></span>
                     </div>
                     <div class="mb-3">

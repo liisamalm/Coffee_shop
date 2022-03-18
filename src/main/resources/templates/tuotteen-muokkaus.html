@@ -26,12 +26,12 @@
                 </div>
                 <!-- Tuotenimi -->
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingTuoteNimi" name="nimi" placeholder="Tuotteen nimi">
+                    <input maxlength="50" type="text" class="form-control" id="floatingTuoteNimi" name="nimi" placeholder="Tuotteen nimi" required>
                     <label for="floatingTuoteNimi">Tuotteen nimi</label>
                 </div>
                 <!-- Tuotekuvaus -->
                 <div class="form-floating">
-                    <textarea name="kuvaus" rows="3" class="form-control" id="floatingTuoteKuvaus" placeholder="Tuotekuvaus"></textarea>
+                    <textarea maxlength="255" name="kuvaus" rows="3" class="form-control" id="floatingTuoteKuvaus" placeholder="Tuotekuvaus" required></textarea>
                     <label for="floatingTuoteKuvaus">Tuotekuvaus</label>
                 </div>
                 <!-- Osaston valinta -->
@@ -43,7 +43,7 @@
                 </div>
                 <!-- Tuotten hinta -->
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingTuotteenHinta" name="hinta" placeholder="Tuotteen hinta">
+                    <input type="text" class="form-control" id="floatingTuotteenHinta" name="hinta" placeholder="Tuotteen hinta" required>
                     <label for="floatingTuotteenHinta">Tuotteen hinta</label>
                 </div>
                 <!-- Toimittajan valinta -->
@@ -55,7 +55,7 @@
                 </div>
                 <!-- Tuotteen kuvan lataaminen -->
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" name="tuotekuva" id="tuotekuva">
+                    <input type="file" class="form-control" name="tuotekuva" id="tuotekuva" required>
                     <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
                 </div>
                 <button type="submit" class="btn btn-light">Tallenna</button>   

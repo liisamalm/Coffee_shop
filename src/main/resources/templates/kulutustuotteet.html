@@ -8,6 +8,13 @@
         <main class="px-3">
         <h1>Nooran Kahvikauppa</h1>
         <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
+        <div class="haku">
+          <form th:action="@{/searchProducts}" method="get" class="d-flex">
+            <input class="form-control me-2" type="search" name="hakusana" placeholder="Hae sanalla..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Hae</button>
+            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+          </form>
+        </div>
         
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div th:each="kulutustuote : ${kulutustuotteet}" class="col">
@@ -32,5 +39,10 @@
         </main>
 <footer th:replace="fragments/footer :: footer-fragment"></footer>
     </div>
+    <script type="text/javascript">
+      function clearSearch() {
+          window.location = "[[@{/kulutustuotteet}]]";
+      }
+  </script>
 </body>
 </html>

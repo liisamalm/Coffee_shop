@@ -19,34 +19,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CoffeeProductsController {
 
     @Autowired
-    private TuoteRepository tuoteRepository;
-
-    @Autowired
     private TuotteenHallintaService tuotteenHallintaService;
 
-    @GetMapping("/kulutustuotteet")
-    public String machines(Model model, @Param ("hakusana") String hakusana) {
-        // Collection<Tuote> listProducts = tuotteenHallintaService.listAll(hakusana);
-        model.addAttribute("kulutustuotteet", tuoteRepository.findAllKulutustuotteet());
-        // model.addAttribute("kulutustuotteet", listProducts);
-        model.addAttribute("hakusana", hakusana);
+    // Näyttää kulutustuotteet sivulla, hakusanan perusteella
+    @GetMapping(path= {"/kulutustuotteet", "/searchProducts"})
+    public String products(Model model, @Param ("hakusana") String hakusana) {
+        List<Tuote> listProducts = tuotteenHallintaService.listAllKulutustuotteetHakusanalla(hakusana);
+        model.addAttribute("kulutustuotteet", listProducts);
         return "kulutustuotteet";
     }
 
+    // Hakee tuotteen kuvan ja näyttää sen kulutustuote-sivulla
     @ResponseBody
     @GetMapping("/kulutustuote/tuoteKuva/{id}")
     public byte[] getImage(@PathVariable Long id) {
         return tuotteenHallintaService.getTuoteImage(id);
     }
 
+    // Näyttää yhden tuotteen tiedot id:n perusteella ja ohjaa kulutustuotesivulle
     @GetMapping("/kulutustuotteet/{id}")
     public String showOneKulutustuote(Model model, @PathVariable Long id) {
         model.addAttribute("kulutustuote", tuotteenHallintaService.findTuote(id));
         return "kulutustuote";
     }
-    /* @GetMapping("/kulutustuote/{id}")
-    public String showOneKulutustuote() {
-        return "kulutustuote";
-    } */
-
 }

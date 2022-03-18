@@ -37,7 +37,7 @@ public class NoorasController {
     @Autowired
     private OsastoService osastoService;
 
-    
+    // Hakee kannasta tietoja tuotteen lisäämistä varten
     @GetMapping("/tuotteen-muokkaus")
     public String editProduct(Model model) {
         model.addAttribute("tuotteet", tuotteenHallintaService.getAllProducts());
@@ -45,27 +45,18 @@ public class NoorasController {
         model.addAttribute("toimittajat", toimittajaService.getAllToimittajat());
         model.addAttribute("valmistajat", valmistajaService.getAllValmistajat());
         return "tuotteen-muokkaus";
-    }
+    }    
 
-    
-    // Lisää uusi tuote
-    // @PostMapping("/tuotteen-muokkaus")
-    // public ResponseEntity<Tuote> addTuote(@RequestBody Tuote tuote) {
-
-    //     Tuote uusiTuote = tuotteenHallintaService.addTuote(tuote);
-
-    //     return new ResponseEntity<>(uusiTuote, HttpStatus.CREATED);
-
-    
-
+    // Lisää tietokantaan uuden tuotteen
     @PostMapping("/tuotteen-muokkaus")
     public String lisaaTuote(@RequestParam String nimi, @RequestParam String kuvaus, @RequestParam BigDecimal hinta, @RequestParam("tuotekuva") MultipartFile tuotekuva, @RequestParam Toimittaja toimittaja, @RequestParam Valmistaja valmistaja, @RequestParam Osasto osasto) throws IOException {
         tuotteenHallintaService.addTuote(nimi, kuvaus, hinta, tuotekuva, toimittaja, valmistaja, osasto);
         return "redirect:/tuotteen-muokkaus";
     }
 
+    // Näyttää tuotteen luettelossa ja valitessa siirtyy tuote-sivulle
     @GetMapping("/tuotteen-muokkaus/{id}")
-    public String showValmistaja(@RequestParam Long id, Model model) {
+    public String showTuote(@RequestParam Long id) {
         tuotteenHallintaService.findTuote(id);
         return "redirect:/tuote/" + id;
     }
@@ -84,6 +75,7 @@ public class NoorasController {
     return "redirect:/tuotteen-muokkaus";
     }
 
+    // Hakee tuotteen kuvan
     @ResponseBody
     @GetMapping("/tuote/image/{id}")
     public byte[] getImage(@PathVariable Long id) {

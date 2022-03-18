@@ -15,6 +15,8 @@ import com.example.coffeeshop.Tuote;
 import com.example.coffeeshop.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,17 +69,29 @@ public class TuotteenHallintaService {
         tuote.setNimi(nimi);
         tuote.setHinta(hinta);
         tuote.setKuvaus(kuvaus);
-        if(tuotekuva.getBytes() != null)
+        if(tuotekuva.getBytes() != null) {
             tuote.setTuotekuva(tuotekuva.getBytes());
+        }
         tuoteRepository.save(tuote);
 
     }
 
-    public Collection<Tuote> listAll(String hakusana) {
+    public List<Tuote> listAllKahvilaitteetHakusanalla(String hakusana) {
+        
         if (hakusana != null) {
-            return tuoteRepository.findWithSearchIgnoreCase(hakusana);
+            hakusana = hakusana.toLowerCase();
+            return tuoteRepository.findMachineWithSearchIgnoreCase(hakusana);
         }
         return tuoteRepository.findAllKahvilaitteet();
+    }
+
+    public List<Tuote> listAllKulutustuotteetHakusanalla(String hakusana) {
+        
+        if (hakusana != null) {
+            hakusana = hakusana.toLowerCase();
+            return tuoteRepository.findProductWithSearchIgnoreCase(hakusana);
+        }
+        return tuoteRepository.findAllKulutustuotteet();
     }
 
     

@@ -27,11 +27,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.headers().frameOptions().sameOrigin(); // sallitaan framejen käyttö
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/css/**","/images/**", "/js/**","/fonts/**","/**, /favicon.ico", "/about", "/kahvilaite/tuoteKuva/**", "/kulutustuote/tuoteKuva/**").permitAll()
-                .antMatchers("/h2-console", "/h2-console/**").permitAll()
                 .antMatchers("/", "/index").permitAll()
-                .antMatchers("/kahvilaitteet", "/kahvilaitteet/**").permitAll()
-                .antMatchers("/kulutustuotteet", "/kulutustuotteet/**").permitAll()
+                .antMatchers("/css/**","/images/**", "/js/**","/fonts/**","/**, /favicon.ico", "/about", "/kahvilaite/tuoteKuva/**", "/kulutustuote/tuoteKuva/**").permitAll()
+                /* .antMatchers(HttpMethod.GET, "/css/**","/images/**", "/js/**","/fonts/**","/**, /favicon.ico", "/about", "/kahvilaite/tuoteKuva/**", "/kulutustuote/tuoteKuva/**").permitAll() */
+                .antMatchers("/h2-console", "/h2-console/**").permitAll()
+                
+                .antMatchers("/kahvilaitteet", "/kahvilaitteet/**", "/search").permitAll()
+                .antMatchers("/kulutustuotteet", "/kulutustuotteet/**", "/searchProducts").permitAll()
                 .antMatchers("/registration", "/registration/**").permitAll()
                 .antMatchers("/vip", "/vip/**").permitAll()
                 .antMatchers("/tuotteenhallinta", "tuotteenhallinta/**").hasAnyAuthority("ADMIN")

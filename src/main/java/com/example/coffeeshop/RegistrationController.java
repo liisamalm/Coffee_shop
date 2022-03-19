@@ -25,12 +25,12 @@ public class RegistrationController {
     }
 
     @GetMapping("/registration")
-    public String viewRegistration(@ModelAttribute UserData userData) {
+    public String viewRegistration() {
         return "vip";
     }
 
     @PostMapping("/registration")
-    public String createUser(@Valid @ModelAttribute UserData userData, BindingResult bindingResult){
+    public String register(@Valid @ModelAttribute UserData userData, BindingResult bindingResult ){
         if (bindingResult.hasErrors()) {
             return "vip";
         }

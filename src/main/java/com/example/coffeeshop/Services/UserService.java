@@ -30,6 +30,14 @@ public class UserService {
     private UserData getUserData() {
         return new UserData();
     }
+    
+    public UserData getUser(String email){
+        return userRepository.findByEmail(email);
+    }
+
+    public UserData getUserById(Long id){
+        return userRepository.getById(id);
+    }
 
      public void createUser(@ModelAttribute UserData userData){
         Role role = roleRepository.findByName("USER");
@@ -42,12 +50,3 @@ public class UserService {
     }  
 }
 
-/*   public UserData getUser(String email){
-        return userRepository.findByEmail(email);
-    }
-
-    public UserData getUserById(Long id){
-        return userRepository.getById(id);
-    }
- */
- 

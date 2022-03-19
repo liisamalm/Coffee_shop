@@ -16,36 +16,34 @@
                     <div class="card-body p-5">
 
                       <h2 class="text-uppercase text-center mb-5">Rekisteröidy VIP-asiakkaaksi tästä:</h2>
-                     
-                      <form th:action="@{/registration}" th:object="${userData}" method="POST">
+                          <form th:action="@{/registration}" th:object="${userData}" method="POST">
                         <table>
-
                           <div class="form-floating mb-4">
-                            <input type="text" th:field="*{name}" id="form3Example1cg" class="form-control form-control-lg" name="name" />
-                            <label class="form-label" for="form3Example1cg">Etunimi ja sukunimi</label>
+                            <input type="text" th:field="*{name}" id="name" class="form-control form-control-lg" name="name" th:value="*{name}" th:required="required"/>
+                            <label for="name" class="form-label" >Etunimi ja sukunimi</label>
                             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Virheviesti></p>
                           </div>
 
                           <div class="form-floating mb-4">
-                            <input type="text" th:field="*{address}" id="form3Example1cg" class="form-control form-control-lg" />
+                            <input type="text" th:field="*{address}" id="form3Example1cg" class="form-control form-control-lg" th:value="*{address}" th:required="required"/>
                             <label class="form-label" for="form3Example1cg">Osoite</label>
                             <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Virheviesti></p>
                           </div>
 
                           <div class="form-floating mb-4">
-                            <input type="email" th:field="*{email}" id="form3Example3cg" class="form-control form-control-lg" />
+                            <input type="email" th:field="*{email}" id="form3Example3cg" class="form-control form-control-lg" th:value="*{email}" th:required="required" />
                             <label class="form-label" for="form3Example3cg">Sähköposti</label>
                             <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Virheviesti></p>
                           </div>
 
                           <div class="form-floating mb-4">
-                            <input type="text" th:field="*{username}" id="form3Example1cg" class="form-control form-control-lg" />
+                            <input type="text" th:field="*{username}" id="form3Example1cg" class="form-control form-control-lg" th:value="*{username}" th:required="required" />
                             <label class="form-label" for="form3Example1cg">Käyttäjätunnus</label>
                             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Virheviesti></p>
                           </div>
 
                           <div class="form-floating mb-4">
-                            <input type="text" th:field="*{password}" id="form3Example3cg" class="form-control form-control-lg" />
+                            <input type="text" th:field="*{password}" id="form3Example3cg" class="form-control form-control-lg" th:value="*{password}" th:required="required"/>
                             <label class="form-label" for="form3Example3cg">Salasana</label>
                             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Virheviesti></p>
                           </div>
@@ -55,10 +53,7 @@
                             <div class="d-flex justify-content-center">
                               <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Rekisteröidy</button>
                             </div>   
-                          
-
-                        
-                              </table>
+                            </table>
                           </form>
                         </div>
                       </div>
@@ -104,7 +99,8 @@
                                   <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Rekisteröidy</button>
                                   </div>-->
-
+<!-- 
+                           -->
 
 
 

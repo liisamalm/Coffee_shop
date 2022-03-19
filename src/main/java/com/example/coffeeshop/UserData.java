@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,27 +26,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserData  extends AbstractPersistable<Long>{
+public class UserData extends AbstractPersistable<Long>{
     
-   
     @NotEmpty
-    /* @Size(min = 4, max = 20, message = "Nimen tulee sisältää 4-20 kirjainta") */
+    @Size(min = 3, max = 20, message = "Nimen tulee olla 3 - 20 merkkiä pitkä")
     private String name;
 
-    @NotNull
-    /* @Size(min = 4, max = 50, message = "Osoitteen tulee sisältää 4-50 kirjainta") */
+
+    @NotEmpty
+    @Size(min = 10, max = 50, message = "Osoitteen tulee olla 10 - 50 merkkiä pitkä")
     private String address;
     
-    
+   
     @Column(unique = true)
     @NotEmpty (message = "Tämä kenttä ei saa olla tyhjä!")
     @Email
     private String email;
 
+    
     @NotEmpty
-    /* @Size(min = 4, max = 20, message = "Käyttäjätunnus tulee sisältää 4-20 kirjainta") */
+    @Size(min = 4, max = 20, message = "Käyttäjätunnus tulee sisältää 4-20 kirjainta")
     private String username;
 
+    @NotEmpty
     private String password;
 
     private boolean enabled;
@@ -60,6 +63,6 @@ public class UserData  extends AbstractPersistable<Long>{
 
     public void orElseThrow(Object object) {
     }
- 
+  
 
 }

@@ -2262,3 +2262,12 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 91 more
 >>>>>>> 82a15fcf6ac6f5d8780c53757c2b8f597132d4fa
+2022-03-18 15:19:29 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA U WHERE U.ID=85"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA u where u.id=85 [42001-200]
+2022-03-18 15:20:09 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA WHERE ID=85"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA where id=85 [42001-200]
+2022-03-18 15:21:06 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA WHERE ID='85'"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA where id='85' [42001-200]

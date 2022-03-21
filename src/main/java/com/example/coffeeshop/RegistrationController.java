@@ -30,7 +30,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String register(@Valid @ModelAttribute UserData userData, BindingResult bindingResult ){
+    public String register(@Valid @ModelAttribute UserData userData, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return "vip";
         }

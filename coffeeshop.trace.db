@@ -2262,6 +2262,7 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 91 more
 >>>>>>> 82a15fcf6ac6f5d8780c53757c2b8f597132d4fa
+<<<<<<< HEAD
 2022-03-18 21:22:12 jdbc[16]: null
 org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.get(DbException.java:205)
@@ -2559,3 +2560,14 @@ DELETE FROM USER_DATA WHERE USER_ID=127 [42122-200]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+=======
+2022-03-18 15:19:29 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA U WHERE U.ID=85"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA u where u.id=85 [42001-200]
+2022-03-18 15:20:09 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA WHERE ID=85"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA where id=85 [42001-200]
+2022-03-18 15:21:06 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE *[*] FROM USER_DATA WHERE ID='85'"; expected "identifier"; SQL statement:
+delete * FROM USER_DATA where id='85' [42001-200]
+>>>>>>> dd9c418bdbba5db16fb0f9d98031291700cb6713

@@ -10,15 +10,6 @@ import org.springframework.stereotype.Service;
 public class OsastoService {
     
     @Autowired
-    private TuoteRepository tuoteRepository;
-
-    @Autowired
-    private ValmistajaRepository valmistajaRepository;
-
-    @Autowired
-    private ToimittajaRepository toimittajaRepository;
-
-    @Autowired
     private OsastoRepository osastoRepository;
 
 

@@ -10,3 +10,11 @@ body {
 .logout{
   margin-left: 10em;
 }
+.nav-item {
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+.navbar-brand{
+  padding-inline-start: 1em;
+}

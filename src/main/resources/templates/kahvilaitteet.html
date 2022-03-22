@@ -10,9 +10,11 @@
         <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
         <div class="haku">
           <form th:action="@{/search}" method="get" class="d-flex">
-            <input class="form-control me-2" type="search" name="hakusana" placeholder="Hae sanalla..." aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Hae</button>
-            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+            <div class="input-group">
+              <input type="search" name="hakusana" placeholder="Hae sanalla..." aria-label="Search" class="form-control">
+              <button class="btn btn-outline-secondary" type="submit">Hae</button>
+              <button class="btn btn-outline-secondary" type="button" id="btnClear" onclick="clearSearch()">Tyhjennä</button>
+            </div>
           </form>
         </div> 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

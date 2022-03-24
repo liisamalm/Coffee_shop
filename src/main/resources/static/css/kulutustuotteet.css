@@ -2,3 +2,18 @@
 
     background-color: lightcyan;
 }
+
+.detail-img {
+    display: block;
+}
+.detail-img img{
+    max-width: 100%;
+}
+
+figure {
+    display: block;
+}
+
+figure img {
+    max-width: 100%;
+}

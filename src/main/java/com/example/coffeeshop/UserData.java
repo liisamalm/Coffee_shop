@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class UserData extends AbstractPersistable<Long>{
     
     @NotEmpty
-    @Size(min = 3, max = 20, message = "Nimen tulee olla 3 - 20 merkkiä pitkä")
+    @Size(min = 3, max = 50, message = "Nimen tulee olla 3 - 20 merkkiä pitkä")
     private String name;
 
 
@@ -49,6 +49,7 @@ public class UserData extends AbstractPersistable<Long>{
     private String username;
 
     @NotEmpty
+    @Size(min = 4, max = 20, message = "Käyttäjätunnus tulee sisältää 4-10 merkkiä")
     private String password;
 
     private boolean enabled;

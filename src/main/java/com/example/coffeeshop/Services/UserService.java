@@ -2,8 +2,6 @@ package com.example.coffeeshop.Services;
 
 import java.util.*;
 
-import javax.transaction.Transactional;
-
 import com.example.coffeeshop.RoleRepository;
 import com.example.coffeeshop.Role;
 import com.example.coffeeshop.UserData;
@@ -39,7 +37,7 @@ public class UserService {
         return userRepository.getById(id);
     }
 
-     public void createUser(@ModelAttribute UserData userData){
+     public void createUser(UserData userData){
         Role role = roleRepository.findByName("USER");
         Set<Role> roleSet = new HashSet<>();
         roleSet.add(role);

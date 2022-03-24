@@ -1,9 +1,6 @@
 package com.example.coffeeshop.Services;
 
-import java.util.Optional;
-
 import com.example.coffeeshop.CustomUserDetail;
-
 import com.example.coffeeshop.UserData;
 import com.example.coffeeshop.UserRepository; 
 import org.springframework.beans.factory.annotation.Autowired;

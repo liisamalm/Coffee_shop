@@ -1,8 +1,6 @@
 package com.example.coffeeshop.Services;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import com.example.coffeeshop.*;
@@ -15,17 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class ToimittajaService {
     
     @Autowired
-    private TuoteRepository tuoteRepository;
-
-    @Autowired
-    private ValmistajaRepository valmistajaRepository;
-
-    @Autowired
     private ToimittajaRepository toimittajaRepository;
-
-    @Autowired
-    private OsastoRepository osastoRepository;
-
 
     public List<Toimittaja> getAllToimittajat() {
         return toimittajaRepository.findAll();

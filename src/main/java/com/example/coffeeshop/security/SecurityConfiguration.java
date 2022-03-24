@@ -35,6 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/registration", "/registration/**").permitAll()
                 .antMatchers("/vip", "/vip/**").permitAll()
                 .antMatchers("/tuotteenhallinta", "tuotteenhallinta/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/tuotteen-muokkaus", "tuotteen-muokkaus/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/valmistajan-muokkaus", "valmistajan-muokkaus/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/toimittajan-muokkaus", "toimittajan-muokkaus/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
                 
         http.formLogin()

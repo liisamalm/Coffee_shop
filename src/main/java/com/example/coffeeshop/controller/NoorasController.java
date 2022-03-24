@@ -12,6 +12,7 @@ import com.example.coffeeshop.model.Toimittaja;
 import com.example.coffeeshop.model.Valmistaja;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,7 @@ public class NoorasController {
     }    
 
     // Lisää tietokantaan uuden tuotteen
+    @Secured("ADMIN")
     @PostMapping("/tuotteen-muokkaus")
     public String lisaaTuote(@RequestParam String nimi, @RequestParam String kuvaus, @RequestParam BigDecimal hinta, @RequestParam("tuotekuva") MultipartFile tuotekuva, @RequestParam Toimittaja toimittaja, @RequestParam Valmistaja valmistaja, @RequestParam Osasto osasto) throws IOException {
         tuotteenHallintaService.addTuote(nimi, kuvaus, hinta, tuotekuva, toimittaja, valmistaja, osasto);
@@ -83,6 +85,7 @@ public class NoorasController {
     }
 
     // Päivittää tuotteen tiedot
+    @Secured("ADMIN")
     @PostMapping("/updateTuote/{id}")
     public String updateTuote(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String kuvaus, @RequestParam BigDecimal hinta, @RequestParam("tuotekuva") MultipartFile tuotekuva) throws IOException {
         tuotteenHallintaService.updateTuote(id, nimi, kuvaus, hinta, tuotekuva);

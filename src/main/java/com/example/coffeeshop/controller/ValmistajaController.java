@@ -3,6 +3,7 @@ package com.example.coffeeshop.controller;
 import com.example.coffeeshop.Services.ValmistajaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class ValmistajaController {
     }
 
     // Lisää valmistajan tietokantaan
+    @Secured("ADMIN")
     @PostMapping("/valmistajan-muokkaus")
     public String addValmistaja(@RequestParam String nimi, @RequestParam String url) {
         valmistajaService.addValmistaja(nimi, url);
@@ -52,6 +54,7 @@ public class ValmistajaController {
     }
 
     // Päivittää valmistajan tiedot
+    @Secured("ADMIN")
     @PostMapping("/update/{id}")
     public String updateValmistaja(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String url) {
         valmistajaService.updateValmistaja(id, nimi, url);

@@ -43,11 +43,11 @@ public class UserData extends AbstractPersistable<Long>{
 
     
     @NotEmpty
-    @Size(min = 4, max = 20, message = "Käyttäjätunnus tulee sisältää 4-20 kirjainta")
+    @Size(min = 4, max = 20, message = "Käyttäjätunnuksen tulee sisältää 4-20 kirjainta")
     private String username;
 
     @NotEmpty
-    @Size(min = 4, max = 20, message = "Käyttäjätunnus tulee sisältää 4-10 merkkiä")
+  /*   @Size(min = 4, max = 20, message = "Salasanan tulee sisältää 4-10 merkkiä") */
     private String password;
 
     private boolean enabled;

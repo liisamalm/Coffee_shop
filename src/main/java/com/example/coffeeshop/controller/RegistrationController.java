@@ -4,6 +4,9 @@ import javax.validation.Valid;
 import com.example.coffeeshop.Services.UserService;
 import com.example.coffeeshop.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,7 +30,12 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String viewRegistration() {
-        return "vip";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "vip";
+        }
+        return "redirect:/";
     }
 
     @PostMapping("/registration")

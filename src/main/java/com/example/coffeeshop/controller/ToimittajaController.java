@@ -4,6 +4,7 @@ import com.example.coffeeshop.Services.ToimittajaService;
 import com.example.coffeeshop.model.Toimittaja;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,9 @@ public class ToimittajaController {
     }
 
 //post tyyppinen pyyntö polkuun /toimittajan-muokkaus lisää toimittajan tietokantaan
-     @PostMapping("/toimittajan-muokkaus")
-     public String addToimittaja(@ModelAttribute Toimittaja toimittaja){
+    @Secured("ADMIN")
+    @PostMapping("/toimittajan-muokkaus")
+    public String addToimittaja(@ModelAttribute Toimittaja toimittaja){
          toimittajaService.addToimittaja(toimittaja);
          return "redirect:/toimittajan-muokkaus";
 
@@ -57,6 +59,7 @@ public class ToimittajaController {
     }
 
     // Päivittää toimittajan tiedot
+    @Secured("ADMIN")
     @PostMapping("/updateToimittaja/{id}")
     public String updateToimittaja(@PathVariable("id") Long id, @RequestParam String nimi, @RequestParam String yhteyshenkilo, String yhteyshenkilonEmail) {
         toimittajaService.updateToimittaja(id, nimi, yhteyshenkilo, yhteyshenkilonEmail);

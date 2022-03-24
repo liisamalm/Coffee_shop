@@ -1,6 +1,8 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.repos;
 
 import java.util.List;
+
+import com.example.coffeeshop.model.Tuote;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

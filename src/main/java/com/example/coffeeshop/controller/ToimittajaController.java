@@ -1,6 +1,7 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.controller;
 
 import com.example.coffeeshop.Services.ToimittajaService;
+import com.example.coffeeshop.model.Toimittaja;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

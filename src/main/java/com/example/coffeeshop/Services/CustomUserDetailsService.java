@@ -1,8 +1,9 @@
 package com.example.coffeeshop.Services;
 
-import com.example.coffeeshop.CustomUserDetail;
-import com.example.coffeeshop.UserData;
-import com.example.coffeeshop.UserRepository; 
+import com.example.coffeeshop.model.UserData;
+import com.example.coffeeshop.repos.UserRepository;
+import com.example.coffeeshop.security.CustomUserDetail;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

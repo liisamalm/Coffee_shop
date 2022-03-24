@@ -1,4 +1,4 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.model;
 
 import java.util.HashSet;
 import java.util.Set;

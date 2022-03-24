@@ -1,7 +1,8 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.controller;
 
+import javax.validation.Valid;
 import com.example.coffeeshop.Services.UserService;
-
+import com.example.coffeeshop.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

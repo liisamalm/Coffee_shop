@@ -1,8 +1,11 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.*;
- 
+
+import com.example.coffeeshop.model.Role;
+import com.example.coffeeshop.model.UserData;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

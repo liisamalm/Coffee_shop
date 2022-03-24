@@ -1,6 +1,8 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.repos;
 
 import java.util.Optional;
+
+import com.example.coffeeshop.model.UserData;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

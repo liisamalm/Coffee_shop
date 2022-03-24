@@ -1,4 +1,4 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.model;
 
 import java.math.BigDecimal;
 import javax.persistence.Basic;
@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import lombok.AllArgsConstructor;

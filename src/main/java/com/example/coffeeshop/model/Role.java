@@ -1,4 +1,4 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

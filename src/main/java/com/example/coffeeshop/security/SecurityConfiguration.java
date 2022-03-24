@@ -1,4 +1,4 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.security;
 
 import com.example.coffeeshop.Services.CustomUserDetailsService;
 

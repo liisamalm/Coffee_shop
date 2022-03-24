@@ -2,8 +2,9 @@ package com.example.coffeeshop.Services;
 
 import java.util.List;
 import javax.transaction.Transactional;
+import com.example.coffeeshop.model.Valmistaja;
+import com.example.coffeeshop.repos.ValmistajaRepository;
 
-import com.example.coffeeshop.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

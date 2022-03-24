@@ -1,4 +1,4 @@
-package com.example.coffeeshop;
+package com.example.coffeeshop.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -7,6 +7,9 @@ import com.example.coffeeshop.Services.OsastoService;
 import com.example.coffeeshop.Services.ToimittajaService;
 import com.example.coffeeshop.Services.TuotteenHallintaService;
 import com.example.coffeeshop.Services.ValmistajaService;
+import com.example.coffeeshop.model.Osasto;
+import com.example.coffeeshop.model.Toimittaja;
+import com.example.coffeeshop.model.Valmistaja;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

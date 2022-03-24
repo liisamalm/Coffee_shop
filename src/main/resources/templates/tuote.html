@@ -29,7 +29,7 @@
                         <span th:if="${#fields.hasErrors('kuvaus')}" th:errors="*{kuvaus}"></span></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="hinta">Hinta:</label>
+                        <label class="form-label" for="hinta">Hinta, esim. 9.99:</label>
                         <input class="form-control" type="number" th:field="*{hinta}" id="hinta" placeholder="Hinta">
                         <span th:if="${#fields.hasErrors('hinta')}" th:errors="*{hinta}"></span>
                     </div>
@@ -46,17 +46,17 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="toimittaja">Toimittaja:</label>
-                        <input class="form-control" type="text" th:field="*{toimittaja.nimi}" id="toimittaja" placeholder="Toimittaja">
+                        <input class="form-control" type="text" th:field="*{toimittaja.nimi}" id="toimittaja" placeholder="Toimittaja" disabled>
                         <span th:if="${#fields.hasErrors('toimittaja.nimi')}" th:errors="*{toimittaja.nimi}"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="valmistaja">Valmistaja:</label>
-                        <input class="form-control" type="text" th:field="*{valmistaja.nimi}" id="valmistaja" placeholder="Valmistaja">
+                        <input class="form-control" type="text" th:field="*{valmistaja.nimi}" id="valmistaja" placeholder="Valmistaja" disabled>
                         <span th:if="${#fields.hasErrors('valmistaja.nimi')}" th:errors="*{valmistaja.nimi}"></span>
                     </div>
                     <div-mb-3>
                         <label class="form-label" for="osasto">Osasto:</label>
-                        <input class="form-control mb-3" type="text" th:field="*{osasto.nimi}" id="osasto" placeholder="Osasto">
+                        <input class="form-control mb-3" type="text" th:field="*{osasto.nimi}" id="osasto" placeholder="Osasto" disabled>
                         <span th:if="${#fields.hasErrors('osasto.nimi')}" th:errors="*{osasto.nimi}"></span>
                     </div-mb-3>
                     <div class="mb-3">

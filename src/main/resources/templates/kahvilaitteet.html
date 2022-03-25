@@ -6,13 +6,43 @@
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
         <main class="px-3">
-        <h1>Liisan & Jannan Coffee Shop</h1>
+        <h1>Nooran Kahvikauppa</h1>
         <p class="lead">Myy kahvilaitteita ja kahvitteluun liittyviä kulutustuotteita</p>
-        <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Kirjaudu sisään VIP asiakkaana</a>
-        </p>
+        <div class="haku">
+          <form th:action="@{/search}" method="get" class="d-flex">
+            <div class="input-group">
+              <input type="search" name="hakusana" placeholder="Hae sanalla..." aria-label="Search" class="form-control">
+              <button class="btn btn-outline-secondary" type="submit">Hae</button>
+              <button class="btn btn-outline-secondary" type="button" id="btnClear" onclick="clearSearch()">Tyhjennä</button>
+            </div>
+          </form>
+        </div> 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div th:each="kahvilaite : ${kahvilaitteet}" class="col">
+              <div class="card shadow-sm">
+                <figure>
+                    <a th:href="@{/kahvilaitteet/{id}(id=${kahvilaite.id})}"><img class="img-fluid tuote-kuva" th:src="@{/kahvilaite/tuoteKuva/{id}(id=${kahvilaite.id})}" alt="Kuva tuotteesta"></a>
+                </figure>
+                <div class="card-body">
+                  <p th:text="${kahvilaite.nimi}"></p>  
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <h5 th:text="'Hinta: ' + ${kahvilaite.hinta} + ' €'"></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            </div>  
+        </div>
         </main>
 <footer th:replace="fragments/footer :: footer-fragment"></footer>
     </div>
+    <script type="text/javascript">
+      function clearSearch() {
+          window.location = "[[@{/kahvilaitteet}]]";
+      }
+  </script>
 </body>
 </html>

@@ -23,7 +23,7 @@
           <li class="nav-item">
             <a class="nav-link" th:href="@{/signin}">Kirjaudu sisään</a>
           </li>
-
+<!-- näkyy vain nooralle -->
             <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
               <a class="nav-link" th:href="@{/tuotteenhallinta}">Nooran sivu</a>
           </li>

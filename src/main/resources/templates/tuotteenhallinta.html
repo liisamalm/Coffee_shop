@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="fragments/head :: head-fragment('Coffee Shop')">
-    
-</head>
+<head th:replace="fragments/head :: head-fragment('Coffee Shop')"></head>
 <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
-  <header th:replace="fragments/header :: header-fragment"></header>  
+  <header th:replace="fragments/header :: header-fragment"></header>
+
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      
-      </header>
       <main class="px-3">
-        <h1>Tervetuloa kuningattaret!</h1>
-        <p>Valitse seuraavista:</p>
-        <a th:href="@{/tuotteen-muokkaus}"><button type="button" class="btn btn-secondary">Muokkaa Tuotteita</button></a>
-        <a th:href="@{/toimittajan-muokkaus}"><button type="button" class="btn btn-secondary">Muokkaa Toimittajia</button></a>
-        <a th:href="@{/valmistajan-muokkaus}"><button type="button" class="btn btn-secondary">Muokkaa Valmistajia</button></a>
+        <h1>Valitse seuraavista:</h1>
+        
+        <a th:href="@{/tuotteen-muokkaus}"><button type="button" class="btn btn-light">Muokkaa Tuotteita</button></a>
+        <a th:href="@{/toimittajan-muokkaus}"><button type="button" class="btn btn-light">Muokkaa Toimittajia</button></a>
+        <a th:href="@{/valmistajan-muokkaus}"><button type="button" class="btn btn-light">Muokkaa Valmistajia</button></a>
       </main>
     
     <footer th:replace="fragments/footer :: footer-fragment"></footer>  
     </div>
-    
-    
-        
-      
-    
+   
     </body>
 </html>
